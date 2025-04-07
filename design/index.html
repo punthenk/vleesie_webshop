@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/design/css/style.css">
+    <link rel="stylesheet" href="/design/css/navbar.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     <title>Vleesie</title>
 </head>
 <body>
-    <h1>hallo</h1>
+  
+    <nav>
+     <div class="sidebar">
+      <a class="close-icon" href="#" onclick="CloseSidebar()"><img src="../images/CloseIcon.png" alt="MN logo" /></a>
+      <a class="nav-link active-tab" href="index.html">HOME</a>
+      <a class="nav-link" href="#">Nieuw</a>
+      <a class="nav-link" href="#">Producten</a>
+      <a class="nav-link" href="#">Inloggen</a>
+      <input type="text" placeholder="Zoekbalk" class="search-bar">
+      <a class="nav-link" href="#">Winkelwagen</a>
+    </div>
+
+    <div>
+      
+      <a class="nav-link active-tab hide-on-mobile" href="index.html">HOME</a>
+      <input type="text" placeholder="Search bar" class="search-bar">
+      <a class="nav-link hide-on-mobile" href="#">Nieuw</a>
+      <a class="nav-link hide-on-mobile" href="#">Producten</a>
+      <a class="nav-link hide-on-mobile" href="#">Inloggen</a>
+      <a class="nav-link hide-on-mobile" href="#">Winkelwagen </a>
+      <a class="nav-link menu-icon" onclick="OpenSidebar()"><img src="../images/HamburgerIcon.png" alt=""></a>
+    </div>
+  </nav>
 </body>
+<script src="/design/css/navbar.css"></script>
 </html>
