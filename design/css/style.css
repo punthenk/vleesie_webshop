@@ -1,6 +1,7 @@
 body {
     font-family: "SF Pro Display", sans-serif;
     margin: 0;
+    padding: 0;
 }
 .text-container {
     display: flex;
@@ -9,13 +10,60 @@ body {
     flex-direction: column;
     align-items: flex-start;
     width: 40%;     
+    
 }
-.search-bar {
+p {
+    font-size: 18px;
+    
+    margin: 0;
+    padding: 0;
+}
+/* .search-bar { 
+
+    pas dit later aan :)
+    
     width: 300px;
     height: 30px;
     background-color: #ffffff;
     border: 2px solid #000000;
     border-radius: 10px;
-    padding: 10px;
+    margin-right: 50px;
     box-sizing: border-box;
+    margin-left: auto;
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 0;
+}    */
+.product-card {
+    width: 400px;
+    height: 400px;
+    background-color: #dddada;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: right;
+    padding: 20px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+.product-card:hover {
+    transform:scale(1.02);
+   
+}
+.product-card:active {
+    transform:rotate(3deg) scale(0.98);
+}
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
 }
