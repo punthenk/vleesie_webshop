@@ -48,7 +48,7 @@ p {
    
 }
 .product-card:active {
-    transform:rotate(3deg) scale(0.98);
+    transform:rotate(2deg) scale(1);
 }
 .product-card img {
     width: 100%;
