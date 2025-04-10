@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
@@ -8,7 +11,29 @@
     <link href="css/register.css" rel="stylesheet">
   </head>
   <body>
-
+<nav>
+            <div class="sidebar">
+                <a class="close-icon" href="#" onclick="CloseSidebar()"
+                    ><img src="/img/closemenu.png" alt=""
+                /></a>
+                <a class="nav-link active-tab" href="index.html">HOME</a>
+                <a class="nav-link" href="#">Nieuw</a>
+                <a class="nav-link" href="product.html">Producten</a>
+                <a class="nav-link" href="login.html">Inloggen</a>
+                <a class="nav-link" href="cart.html">Winkelwagen</a>
+            </div>
+            
+            <div>
+                <!-- <a class="logo-vleesie" href="index.html"><img src="/design/img/vleesie-logo.png"  /></a> -->
+                <a class="nav-link hide-on-mobile" href="index.html">HOME</a>
+                <a class="nav-link hide-on-mobile" href="#">Nieuw</a>
+                <a class="nav-link hide-on-mobile" href="product.html">Producten</a>
+                <a class="nav-link hide-on-mobile" href="login.html">Inloggen</a>
+                <a class="nav-link hide-on-mobile" href="cart.html">Winkelwagen</a>
+                <a class="nav-link menu-icon" onclick="OpenSidebar()">
+                <img src="/img/hamburger.png" alt=""/></a>
+            </div>
+        </nav>
     <div class="register-container">
       <div class="top-bar">
         <h2>Registreren</h2>
