@@ -1,58 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="/design/css/style.css" />
-        <link rel="stylesheet" href="/design/css/navbar.css" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.cdnfonts.com/css/sf-pro-display"
-            rel="stylesheet"
-        />
-        <title>Vleesie</title>
-    </head>
-    <body>
-        <nav>
-            <div class="sidebar">
-                <a class="close-icon" href="#" onclick="CloseSidebar()"
-                    ><img src="/design/img/closemenu.png" alt=""
-                /></a>
-                <a class="nav-link active-tab" href="index.html">HOME</a>
-                <a class="nav-link" href="#">Nieuw</a>
-                <a class="nav-link" href="product.html">Producten</a>
-                <a class="nav-link" href="login.html">Inloggen</a>
-                <a class="nav-link" href="cart.html">Winkelwagen</a>
+<html lang="nl">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Vleesie</title>
+
+      <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+      <link rel="manifest" href="img/site.webmanifest">
+
+      <link rel="stylesheet" href="css/uikit.min.css">
+      <link rel="stylesheet" href="css/style.css">
+
+   </head>
+
+   <body>
+      <nav class="uk-navbar-container">
+         <div class="uk-container">
+            <div uk-navbar>
+
+                  <div class="uk-navbar-left">
+                     <ul class="uk-navbar-nav">
+                        <li>
+                           <a href="/">
+                              <img class="logo" src="img/Vleesie-icon.png" alt="Vleesie" title="Vleesie" />
+                              Vleesie
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+
+                  <div class="uk-navbar-right">
+
+                     <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="/"><span uk-icon="icon: home"></span>Home</a></li>
+                        <li><a href="login.html"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
+                        <li><a href="register.html"><span uk-icon="icon: file-edit"></span>Registreren</a></li>
+                        <li>
+                           <a href="cart.html">
+                              <span uk-icon="icon: cart"></span>
+                              Winkelwagen
+                              <span id="cart_amount_indicator" class="uk-badge">0</span>
+                           </a>
+                        </li>
+                        <li>
+                              <a href="#"><span uk-icon="icon: user"></span>Welkom Koen <span uk-navbar-parent-icon></span></a>
+                              <div class="uk-navbar-dropdown">
+                                 <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-nav-header">Uw gegevens</li>
+                                    <li><a href="#"><span uk-icon="icon: settings"></span>Profiel</a></li>
+                                    <li><a href="#"><span uk-icon="icon: bag"></span>Bestellingen</a></li>
+                                    <li><a href="#"><span uk-icon="icon: credit-card"></span>Facturen</a></li>
+                                    <li><a href="#"><span uk-icon="icon: refresh"></span>Retouren</a></li>
+                                    <li><a href="#"><span uk-icon="icon: heart"></span>Wensenlijst</a></li>
+                                    <li class="uk-nav-header">Contact</li>
+                                    <li><a href="#"><span uk-icon="icon: info"></span>Klantenservice</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><a href="#"><span uk-icon="icon: sign-out"></span>Uitloggen</a></li>
+                                 </ul>
+                              </div>
+                        </li>
+                     </ul>
+
+                  </div>
             </div>
-            
-            <div>
-                <!-- <a class="logo-vleesie" href="index.html"><img src="/design/img/vleesie-logo.png"  /></a> -->
-                <a class="nav-link hide-on-mobile" href="index.html">HOME</a>
-                <a class="nav-link hide-on-mobile" href="#">Nieuw</a>
-                <a class="nav-link hide-on-mobile" href="product.html">Producten</a>
-                <a class="nav-link hide-on-mobile" href="login.html">Inloggen</a>
-                <a class="nav-link hide-on-mobile" href="cart.html">Winkelwagen</a>
-                <a class="nav-link menu-icon" onclick="OpenSidebar()">
-                <img src="/design/img/hamburger.png" alt=""/></a>
-            </div>
-        </nav>
-        
-        <div class="text-container">
-            <h1>Welkom bij Vleesie</h1>
-            <p>
-                Bij Vleesie draait alles om kwaliteit en smaak. Ontdek ons brede
-                assortiment aan verse vleesproducten, zorgvuldig geselecteerd en
-                met liefde bereid. Of je nu op zoek bent naar een sappige steak,
-                malse kipfilet of ambachtelijke specialiteiten, bij Vleesie ben
-                je aan het juiste adres. Bestel eenvoudig online en geniet van
-                de beste producten, direct bij jou thuisbezorgd.
-            </p>
-        </div>
-        <!-- <input type="text" placeholder="Zoekbalk" class="search-bar" /> -->
-        <div class="product-card">
-        <img src="/design/img/roasted-chicken-wings.jpg" alt="roasted-chicken-wings">
-        <h2>roasted chicken wings</h2>
-        </div>
-        
-    </body>
-    <script src="/design/js/navbar.js"></script>
+         </div>
+      </nav>
+
+      <main class="uk-container uk-padding">
+         <div class="uk-alert-success" uk-alert>
+            <a href class="uk-alert-close" uk-close></a>
+            <p>Hier tonen we o.a. of het inloggen succesvol was.</p>
+         </div>
+         <div class="uk-grid">
+            <section class="uk-width-4-5">
+               <h4 class="uk-text-muted uk-text-small">Gekozen categorieën: <span class="uk-text-small uk-text-primary">Alle</span></h4>
+               <div class="uk-flex uk-flex-home uk-flex-wrap">
+                  <!-- PRODUCT KAART 1 -->
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="product.html">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/white-chicken.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Een ideale kip voor beginnende wedstrijd deelnemer.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 19.95</p>
+                     </div>
+                  </a>
+                  <!-- EINDE PRODUCT KAART 1 -->
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/brown-chicken.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Een kip voor de gevorderde wedstrijd deelnemer.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 29.95</p>
+                     </div>
+                  </a>
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/black-chicken.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Een kip voor de professionele wedstrijd deelnemer.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 39.95</p>
+                     </div>
+                  </a>
+                  
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/broedmachine-small.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Klein beginnen? Dan is deze broedmachine iets voor u.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 109.95</p>
+                     </div>
+                  </a>
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/broedmachine-large.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Professionele wedstrijd deelnemer? Dan is deze broedmachine iets voor u.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 309.95</p>
+                     </div>
+                  </a>
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/witte-verf-2-5l.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Ideale hoeveelheid verf om thuis te oefenen.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 18.50</p>
+                     </div>
+                  </a>
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/witte-verf-5l.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Geschikt voor de professional.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 34.00</p>
+                     </div>
+                  </a>
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/kippenhok-small.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Geschikt voor het huizen van maximaal 5 kippen.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 75.00</p>
+                     </div>
+                  </a>
+                  <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="/">
+                     <div class="uk-card-media-top uk-align-center">
+                        <img src="img/kippenhok-medium.jpg" alt="Witte kip" class="product-image uk-align-center">
+                     </div>
+                     <div class="uk-card-body uk-card-body-home">
+                        <p class="product-card-p">Geschikt voor het huizen van maximaal 10 kippen.</p>
+                        <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; 149.00</p>
+                     </div>
+                  </a>
+               </div>
+            </section>
+         </div>
+      </main>
+
+      <script src="js/uikit.min.js"></script>
+      <script src="js/uikit-icons.min.js"></script>
+   </body>
 </html>

@@ -1,69 +1,79 @@
-body {
-    font-family: "SF Pro Display", sans-serif;
-    margin: 0;
-    padding: 0;
+.logo {
+   height: 40px;
 }
-.text-container {
-    display: flex;
-    margin-left: 30px;
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 40%;     
-    
-}
-p {
-    font-size: 18px;
-    
-    margin: 0;
-    padding: 0;
-}
-/* .search-bar { 
 
-    pas dit later aan :)
-    
-    width: 300px;
-    height: 30px;
-    background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    margin-right: 50px;
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-top: 100px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 0;
-}    */
-.product-card {
-    width: 400px;
-    height: 400px;
-    background-color: #dddada;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    justify-content: right;
-    padding: 20px;
-    position: absolute;
-    right: 20px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    overflow: hidden;
+.uk-grid {
+  justify-content: center;
 }
-.product-card:hover {
-    transform:scale(1.02);
-   
+
+.product-image {
+   width: 206px;
+   height: 206px;
 }
-.product-card:active {
-    transform:rotate(3deg) scale(0.98);
+
+.product-card, .product-card-p {
+   text-decoration: none !important;
+   color: #666;
 }
-.product-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
+
+.uk-card-home, .uk-card-body-home {
+   width: 300px;
 }
+
+.uk-card-body-home > p {
+   max-width: 250px;
+}
+
+.uk-card-body-home > p:first-child {
+   min-height: 72px;
+}
+
+.uk-flex-home, .uk-cart-gap, .uk-card-body-gap {
+   gap: 1rem;
+}
+
+.product-view__price {
+   font-size: 2.5rem;
+   margin: 0;
+}
+
+.uk-text-xsmall {
+   font-size: .5rem;
+   line-height: 1.5;
+}
+
+.uk-link-cart-trash {
+   text-decoration: none !important;
+}
+
+.uk-link-cart-trash:hover {
+   color: #760a1e !important;
+}
+
+.uk-text-medium {
+   font-size: 1.2rem !important;
+   line-height: 1.5;
+}
+
+.uk-card-body-login-logo {
+   width: 200px !important;
+}
+
+.uk-card-register-logo {
+   width: 30px;
+   height: 35px;
+}
+
+.uk-gap {
+   gap: 1rem;
+}
+
+.uk-order-confirm-img {
+   width: 30px !important;
+
+}
+
+.order-confirm-table tbody tr:last-child, tfoot tr:nth-child(2) {
+   border-bottom: 3px solid #e5e5e5 !important;
+}
+
