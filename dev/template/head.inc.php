@@ -13,7 +13,7 @@
   <link rel="manifest" href="img/site.webmanifest">
 
   <link rel="stylesheet" href="../css/uikit.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=1000">
 
 </head>
 
