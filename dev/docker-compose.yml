@@ -1,0 +1,48 @@
+# version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: vleesie_webshop_apache
+    ports:
+# 80:80 -> eerste poort 80 is op je lokale machine, tweede poort 80 is intern in de container
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=webshop
+
+
+  db:
+    image: mysql:8.3
+    container_name: vleesie_webshop_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: webshop
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - db
+
+
+volumes:
+  db_data:
