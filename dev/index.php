@@ -9,7 +9,7 @@ $query = $dbconnect -> prepare($sql);
 
 
 $query -> execute();
-$recset = $query -> fetchAll(PDO::FETCH_ASSOC);
+$products = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 //om te zien wat je nu precies uit de database gehaald hebt:
 
@@ -18,7 +18,7 @@ $recset = $query -> fetchAll(PDO::FETCH_ASSOC);
 /*echo "</pre>";*/
 
 
-@include_once("./template/head.inc.php");
+include_once("./template/head.inc.php");
 
 ?>
 <main class="uk-container uk-padding">
@@ -32,8 +32,8 @@ $recset = $query -> fetchAll(PDO::FETCH_ASSOC);
           class="uk-text-small uk-text-primary">Alle</span></h4>
       <div class="uk-flex uk-flex-home uk-flex-wrap">
         <!-- PRODUCT KAART 1 -->
-        <?php foreach ($recset as $product): ?> 
-        <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="product.html">
+        <?php foreach ($products as $product): ?> 
+        <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="product.php?product_id=<?=$product['ID']?>">
           <div class="uk-card-media-top uk-align-center">
           <img src="<?=$product['image'] ?>" alt="<?=$product['name']?>" class="product-image uk-align-center">
           </div>
