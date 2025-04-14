@@ -38,16 +38,16 @@
           <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="/"><span uk-icon="icon: home"></span>Home</a></li>
             <li><a href="login.html"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
-            <li><a href="register.html"><span uk-icon="icon: file-edit"></span>Registreren</a></li>
+            <li><a href="register.php"><span uk-icon="icon: file-edit"></span>Registreren</a></li>
             <li>
-              <a href="cart.html">
+              <a href="../cart.php">
                 <span uk-icon="icon: cart"></span>
                 Winkelwagen
                 <span id="cart_amount_indicator" class="uk-badge">0</span>
               </a>
             </li>
             <li>
-              <a href="#"><span uk-icon="icon: user"></span>Welkom Koen <span uk-navbar-parent-icon></span></a>
+              <a href="#"><span uk-icon="icon: user"></span>Welkom Koen/Michiel <span uk-navbar-parent-icon></span></a>
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
                   <li class="uk-nav-header">Uw gegevens</li>
