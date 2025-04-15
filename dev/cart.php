@@ -1,7 +1,7 @@
 <?php
 require "src/database/dbconnection.class.php";
 
-$dbconnect = new dbconnection();
+$dbconnect = new Database();
 
 $sql = "SELECT * FROM cart_items";
 

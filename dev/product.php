@@ -1,6 +1,6 @@
 <?php
 require "src/database/dbconnection.class.php";
-$dbconnect = new dbconnection();
+$dbconnect = new Database();
 
 $product_id = $_GET['product_id'];
 $sql = "SELECT * FROM products WHERE id = :id";
