@@ -1,5 +1,5 @@
 <?php
-class dbconnection extends PDO
+class Database extends PDO
 {
   private $host = "db";
   private $dbname = "webshop";
@@ -16,4 +16,6 @@ class dbconnection extends PDO
       echo $error;
     }
   }
+
+
 }
