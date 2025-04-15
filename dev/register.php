@@ -5,7 +5,7 @@
     <form method="POST" action="" class="uk-width-1-1 uk-flex uk-flex-center">
       <div class="uk-card uk-card-default uk-width-4-5 uk-padding-small">
         <div class="uk-card-header uk-flex uk-gap">
-          <img src="img/logo4.png" class="uk-card-media uk-card-register-logo" alt="Vleesie" title="Vleesie" />
+          <img src="img/vleesie-logo.png" class="uk-card-media uk-card-register-logo" alt="Vleesie" title="Vleesie" />
           <h2 class="uk-text-uppercase uk-margin-remove-top">Registreren</h2>
         </div>
         <div class="uk-alert-danger" uk-alert>
