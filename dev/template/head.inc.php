@@ -37,7 +37,7 @@
 
           <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="/"><span uk-icon="icon: home"></span>Home</a></li>
-            <li><a href="login.html"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
+            <li><a href="../login.php"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
             <li><a href="register.php"><span uk-icon="icon: file-edit"></span>Registreren</a></li>
             <li>
               <a href="../cart.php">
