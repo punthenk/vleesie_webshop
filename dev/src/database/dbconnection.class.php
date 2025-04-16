@@ -16,6 +16,4 @@ class Database extends PDO
       echo $error;
     }
   }
-
-
 }
