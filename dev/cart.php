@@ -28,11 +28,10 @@ include_once("template/head.inc.php");
       $product_query->execute([':id' => $product_id]);
 
       $cart_product = $product_query->fetch(PDO::FETCH_ASSOC);
-      
-?>
+      ?>
       <div class="uk-card-default uk-card-small uk-flex uk-flex-between">
         <div class="uk-card-media-left uk-widht-1-5">
-        <img src="<?= $cart_product['image']?>" alt="Witte kip" class="product-image uk-align-center">
+        <img src="<?= $cart_product['image']?>" alt="<?= $cart_product['name']?>" class="product-image uk-align-center">
         </div>
         <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
           <div class="uk-width-3-4 uk-flex uk-flex-column">
@@ -41,7 +40,7 @@ include_once("template/head.inc.php");
           </div>
           <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
             <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
-              <input id="amount" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="1"
+            <input id="amount" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="<?= $product['amount'] ?>"
                 type="number" />
             </div>
             <div class="uk-width-1-4">
