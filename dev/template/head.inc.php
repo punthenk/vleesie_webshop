@@ -1,3 +1,6 @@
+<?php
+@include_once(__DIR__ . '/../src/helpers/cart_stats.php');
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -43,7 +46,7 @@
               <a href="../cart.php">
                 <span uk-icon="icon: cart"></span>
                 Winkelwagen
-                <span id="cart_amount_indicator" class="uk-badge">0</span>
+                <span id="cart_amount_indicator" class="uk-badge"> <?= countItemsInCart() ?></span>
               </a>
             </li>
             <li>

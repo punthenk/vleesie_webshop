@@ -39,10 +39,12 @@ include_once("template/head.inc.php");
             <div>
               <form method="post" action="src/formHandlers/addToCart.php">
                 <input type="hidden" name="product_id" value="<?=$product['ID']?>" />
-                <button class="uk-button uk-button-primary">
-                  <span uk-icon="icon: cart"></span>
-                  In winkelwagen
-                </button>
+                <a href="javascript:void">
+                  <button class="uk-button uk-button-primary">
+                    <span uk-icon="icon: cart"></span>
+                    In winkelwagen
+                  </button>
+                </a>
               </form>
             </div>
           </div>
