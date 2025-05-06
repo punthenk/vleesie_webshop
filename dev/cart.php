@@ -40,8 +40,12 @@ include_once("template/head.inc.php");
           </div>
           <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
             <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
-            <input id="amount" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="<?= $product['amount'] ?>"
-                type="number" />
+            <form id="new-amount-form-<?=$product['ID']?>" method="POST" action="src/formHandlers/updateAmount.php">
+              <input type="hidden" value="<?= $cart_product['ID']?>" name="cart_id" />
+              <input type="hidden" value="<?= $product['ID'] ?>" name="product_id" />
+              <input type="hidden" id="new-amount-<?= $product['ID'] ?>" name="amount" />
+             </form>
+            <input id="amount-<?= $product['ID']?>" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="<?= $product['amount'] ?>" onchange="ChangeAmount(<?= $product['ID']?>)" type="number" />
             </div>
             <div class="uk-width-1-4">
               <a href="#" class="uk-link-cart-trash uk-flex uk-flex-column uk-flex-middle uk-text-danger uk-flex-1">

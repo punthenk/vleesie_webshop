@@ -2,9 +2,10 @@
 require "../database/dbconnection.class.php";
 $dbconnect = new Database();
 
-function UpdateAmount($product_id, $amount) {
-  $dbconnect = new Database();
-  $update_amount_sql = "UPDATE cart_items SET amount = amount + :amount WHERE product_id = :product_id";
-  $update_amount_query = $dbconnect->prepare($update_amount_sql);
-  $update_amount_query->execute([':amount' => $amount, ':product_id' => $product_id]);
-}
+$cart_id = $_POST['card_id'];
+$product_id = $_POST['product_id'];
+$amount = $_POST['amount'];
+
+$sql = "UPDATE cart_items SET amount WHERE ID = :cart_id";
+$query = $dbconnect->prepare($sql);
+$query->execute([":cart_id" => $cart_id]);

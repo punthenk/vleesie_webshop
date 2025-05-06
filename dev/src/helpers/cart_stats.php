@@ -1,5 +1,5 @@
 <?php
-include_once("database/dbconnection.class.php");
+require_once("/var/www/html/src/database/dbconnection.class.php");
 
 function countItemsInCart(): int
 {
