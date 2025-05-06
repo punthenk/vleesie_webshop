@@ -1,5 +1,5 @@
 <?php
-@include_once(__DIR__ . '/../src/helpers/cart_stats.php');
+@include_once(__DIR__ . '/../src/Helpers/cart_stats.php');
 ?>
 <!DOCTYPE html>
 <html lang="nl">

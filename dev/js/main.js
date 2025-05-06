@@ -7,3 +7,8 @@ function ChangeAmount(productID) {
   new_amount.value = amount_value;
   form.submit();
 }
+
+function DeleteProduct(productID) {
+  let form = document.querySelector("#delete-form-" + productID);
+  form.submit();
+}

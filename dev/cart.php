@@ -44,13 +44,17 @@ include_once("template/head.inc.php");
               <input type="hidden" value="<?= $cart_product['ID']?>" name="cart_id" />
               <input type="hidden" value="<?= $product['ID'] ?>" name="product_id" />
               <input type="hidden" id="new-amount-<?= $product['ID'] ?>" name="amount" />
-             </form>
+            </form>
             <input id="amount-<?= $product['ID']?>" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="<?= $product['amount'] ?>" onchange="ChangeAmount(<?= $product['ID']?>)" type="number" />
             </div>
             <div class="uk-width-1-4">
               <a href="#" class="uk-link-cart-trash uk-flex uk-flex-column uk-flex-middle uk-text-danger uk-flex-1">
+              <form id="delete-product-<?= $$product['ID']?>" method="post" action="src/formHandlers/deleteProduct.php" style="display: none;">
+                <input type="hidden" value="<?= $product['ID'] ?>" name="cart_id" />
+                <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>" />
+              </form>
                 <span uk-icon="icon: trash"></span>
-                <span class="uk-text-xsmall">Verwijder</span>
+                <span class="uk-text-xsmall" onclick="DeleteProduct(<?= $product['ID']?>)">Verwijder</span>
               </a>
             </div>
           </div>
