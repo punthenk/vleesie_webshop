@@ -1,7 +1,7 @@
 <?php
 include_once("template/head.inc.php");
 ?>
-  <!-- beetje raar praatje dit... -->
+  <!-- beetje heelraar praatje dit... hmmmmmmmm -->
   <main class="uk-container uk-padding">
     <div class="uk-grid">
       <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
