@@ -1,4 +1,5 @@
 <?php
+include_once("src/database/dbconnection.class.php");
 include_once("./template/head.inc.php");
   ?>
 <main class="uk-container uk-padding uk-flex uk-flex-middle uk-flex-center">
