@@ -16,7 +16,6 @@ $cart_items = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 include_once("template/head.inc.php");
 ?>
-
 <main class="uk-container uk-padding">
   <div class="uk-grid">
     <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
