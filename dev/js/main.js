@@ -1,4 +1,3 @@
-
 function ChangeAmount(productID) {
   let amount_value = document.querySelector("#amount-" + productID);
   let form = document.querySelector("#new-amount-form-" + productID);

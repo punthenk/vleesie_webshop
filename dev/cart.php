@@ -49,7 +49,7 @@ include_once("template/head.inc.php");
             </div>
             <div class="uk-width-1-4">
               <a href="#" class="uk-link-cart-trash uk-flex uk-flex-column uk-flex-middle uk-text-danger uk-flex-1">
-              <form id="delete-product-<?= $$product['ID']?>" method="post" action="src/formHandlers/deleteProduct.php" style="display: none;">
+              <form id="delete-form-<?= $product['ID']?>" method="post" action="src/formHandlers/deleteProduct.php" style="display: none;">
                 <input type="hidden" value="<?= $product['ID'] ?>" name="cart_id" />
                 <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>" />
               </form>
