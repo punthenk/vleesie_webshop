@@ -1,3 +1,6 @@
+<?php
+@include_once(__DIR__ . '/../src/Helpers/cart_stats.php');
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -8,8 +11,8 @@
   <title>Vleesie</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/Vleesie-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/Vleesie-icon.png">
   <link rel="manifest" href="img/site.webmanifest">
 
   <link rel="stylesheet" href="../css/uikit.min.css">
@@ -37,13 +40,13 @@
 
           <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="/"><span uk-icon="icon: home"></span>Home</a></li>
-            <li><a href="login.html"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
+            <li><a href="login.php"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
             <li><a href="register.php"><span uk-icon="icon: file-edit"></span>Registreren</a></li>
             <li>
               <a href="../cart.php">
                 <span uk-icon="icon: cart"></span>
                 Winkelwagen
-                <span id="cart_amount_indicator" class="uk-badge">0</span>
+                <span id="cart_amount_indicator" class="uk-badge"> <?= countItemsInCart() ?></span>
               </a>
             </li>
             <li>

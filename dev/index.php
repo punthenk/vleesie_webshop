@@ -1,7 +1,7 @@
 <?php
 require "src/database/dbconnection.class.php";
 
-$dbconnect = new dbconnection();
+$dbconnect = new Database();
 
 $sql = "SELECT * FROM products";
 
@@ -18,7 +18,7 @@ $products = $query -> fetchAll(PDO::FETCH_ASSOC);
 /*echo "</pre>";*/
 
 
-include_once("./template/head.inc.php");
+include_once("template/head.inc.php");
 
 ?>
 <main class="uk-container uk-padding">
@@ -28,8 +28,7 @@ include_once("./template/head.inc.php");
   </div>
   <div class="uk-grid">
     <section class="uk-width-4-5">
-      <h4 class="uk-text-muted uk-text-small">Gekozen categorieën: <span
-          class="uk-text-small uk-text-primary">Alle</span></h4>
+      <h4 class="uk-text-muted uk-text-small">Gekozen categorieën: <span class="uk-text-small uk-text-primary">Alle</span></h4>
       <div class="uk-flex uk-flex-home uk-flex-wrap">
         <!-- PRODUCT KAART 1 -->
         <?php foreach ($products as $product): ?> 
