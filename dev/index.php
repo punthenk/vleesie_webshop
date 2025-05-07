@@ -19,7 +19,6 @@ $products = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 
 include_once("template/head.inc.php");
-
 ?>
 <main class="uk-container uk-padding">
   <div class="uk-alert-success" uk-alert>

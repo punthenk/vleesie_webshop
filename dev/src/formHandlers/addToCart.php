@@ -1,8 +1,10 @@
 <?php
 require "../database/dbconnection.class.php";
+
 $dbconnect = new Database();
 
 $product_id = $_POST['product_id'];
+$redirect_url = isset($_POST['redirect_url']) ? $_POST['redirect_url'] : '/index.php';
 
 try {
   $product_sql = "SELECT * FROM products WHERE ID = :id";
@@ -29,4 +31,7 @@ try {
   UpdateAmount($product_id, 1, $dbconnect);
 }
 
-
+if(!headers_sent()) {
+  header("Location: " . $redirect_url);
+  exit;
+}
