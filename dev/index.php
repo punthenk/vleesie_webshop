@@ -1,8 +1,13 @@
 <?php
-require "src/Database/Database.php";
+include_once(__DIR__."/src/Database/Database.php");
 
-Database::query("SELECT * FROM products");
-$products = Database::getAll();
+try {
+  Database::query("SELECT * FROM products");
+  $products = Database::getAll();
+} catch (PDOException $err) {
+  echo $err;
+  echo "Hij deed het niet";
+}
 
 include_once("template/head.inc.php");
 ?>
@@ -17,13 +22,13 @@ include_once("template/head.inc.php");
       <div class="uk-flex uk-flex-home uk-flex-wrap">
         <!-- PRODUCT KAART 1 -->
         <?php foreach ($products as $product): ?> 
-        <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="product.php?product_id=<?=$product['ID']?>">
+        <a class="product-card uk-card uk-card-home uk-card-default uk-card-small uk-card-hover" href="product.php?product_id=<?=$product->ID?>">
           <div class="uk-card-media-top uk-align-center">
-          <img src="<?=$product['image'] ?>" alt="<?=$product['name']?>" class="product-image uk-align-center">
+          <img src="<?=$product->image?>" alt="<?=$product->name?>" class="product-image uk-align-center">
           </div>
           <div class="uk-card-body uk-card-body-home">
-          <p class="product-card-p"><?=$product['description']?></p>
-          <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; <?=$product['price']?></p>
+          <p class="product-card-p"><?=$product->description?></p>
+          <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; <?=$product->price?></p>
           </div>
         </a>
         <?php endforeach; ?>
@@ -33,4 +38,4 @@ include_once("template/head.inc.php");
 </main>
 
 <?php
-@include_once("./template/foot.inc.php");
+include_once("./template/foot.inc.php");

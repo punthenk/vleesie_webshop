@@ -28,6 +28,7 @@ class Database
     return true;
   }
 
+
   public static function query(string $query, array $params = []): bool
   {
     if(!self::connect())

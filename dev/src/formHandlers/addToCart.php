@@ -1,34 +1,27 @@
 <?php
-require "../Database/Database.php";
-
-$dbconnect = new Database();
+include_once(__DIR__."/../Database/Database.php");
 
 $product_id = $_POST['product_id'];
 $redirect_url = isset($_POST['redirect_url']) ? $_POST['redirect_url'] : '/index.php';
 
-try {
-  $product_sql = "SELECT * FROM products WHERE ID = :id";
-  $query = $dbconnect->prepare($product_sql);
-  $query->execute([':id' => $product_id]);
-
-  $result = $query -> fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $err) {
-  echo $err;
-}
 
 function UpdateAmount($product_id, $amount) {
-  $dbconnect = new Database();
-  $update_amount_sql = "UPDATE cart_items SET amount = amount + :amount WHERE product_id = :product_id";
-  $update_amount_query = $dbconnect->prepare($update_amount_sql);
-  $update_amount_query->execute([':amount' => $amount, ':product_id' => $product_id]);
+  Database::query("UPDATE cart_items SET amount = amount + :amount WHERE product_id = :product_id", [':amount' => $amount, ':product_id' => $product_id]);
 }
 
+
 try {
-  $insert_product_sql = "INSERT INTO cart_items (ID, product_id, amount) VALUES (ID, :product_id, 2)";
-  $insert_query = $dbconnect->prepare($insert_product_sql);
-  $insert_query->execute([':product_id' => $product_id]);
+  Database::query("SELECT * FROM cart_items WHERE product_id = :id", [':id' => $product_id]);
+  $result = Database::getAll();
+
+  if(empty($result)) {
+    Database::query("INSERT INTO cart_items (ID, product_id, amount) VALUES (ID, :product_id, 1)", [':product_id' => $product_id]);
+  } else {
+    UpdateAmount($product_id, 1);
+  }
+
 } catch (PDOException $err) {
-  UpdateAmount($product_id, 1, $dbconnect);
+  echo "It all went very very wrong" . $err;
 }
 
 if(!headers_sent()) {
