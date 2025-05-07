@@ -52,6 +52,7 @@ include_once("template/head.inc.php");
               <form id="delete-form-<?= $product['ID']?>" method="post" action="src/formHandlers/deleteProduct.php" style="display: none;">
                 <input type="hidden" name="cart_id" value="<?= $product['ID'] ?>"/>
                 <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>" />
+                <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" />
               </form>
                 <span uk-icon="icon: trash"></span>
                 <span class="uk-text-xsmall" onclick="DeleteProduct(<?= $product['ID']?>)">Verwijder</span>

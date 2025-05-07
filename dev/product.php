@@ -1,4 +1,7 @@
 <?php
+include_once(__DIR__.'/src/Helpers/Auth.php');
+getLastVisitedPage();
+
 require "src/database/dbconnection.class.php";
 $dbconnect = new Database();
 
@@ -12,6 +15,7 @@ $query -> execute([':id' => $product_id]);
 $product = $query -> fetch(PDO::FETCH_ASSOC);
 
 include_once("template/head.inc.php");
+
 ?>
 
 <main class="uk-container uk-padding">
@@ -38,6 +42,7 @@ include_once("template/head.inc.php");
             </div>
             <div>
               <form method="post" action="src/formHandlers/addToCart.php">
+                <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" />
                 <input type="hidden" name="product_id" value="<?=$product['ID']?>" />
                 <a href="javascript:void">
                   <button class="uk-button uk-button-primary">
