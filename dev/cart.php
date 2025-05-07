@@ -1,18 +1,8 @@
 <?php
-require "src/database/dbconnection.class.php";
+require "src/Database/Database.php";
 
-$dbconnect = new Database();
-
-$sql = "SELECT * FROM cart_items";
-
-$query = $dbconnect -> prepare($sql);
-
-
-$query -> execute();
-$cart_items = $query -> fetchAll(PDO::FETCH_ASSOC);
-
-/*echo "<pre>";*/
-/*print_r($cart_items);*/
+Database::query("SELECT * FROM cart_items");
+$cart_items = Database::getAll();
 
 include_once("template/head.inc.php");
 ?>

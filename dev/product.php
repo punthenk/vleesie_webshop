@@ -2,7 +2,7 @@
 include_once(__DIR__.'/src/Helpers/Auth.php');
 getLastVisitedPage();
 
-require "src/database/dbconnection.class.php";
+require "src/Database/Database.php";
 $dbconnect = new Database();
 
 $product_id = $_GET['product_id'];

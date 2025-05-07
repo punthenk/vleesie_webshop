@@ -1,22 +1,8 @@
 <?php
-require "src/database/dbconnection.class.php";
+require "src/Database/Database.php";
 
-$dbconnect = new Database();
-
-$sql = "SELECT * FROM products";
-
-$query = $dbconnect -> prepare($sql);
-
-
-$query -> execute();
-$products = $query -> fetchAll(PDO::FETCH_ASSOC);
-
-//om te zien wat je nu precies uit de database gehaald hebt:
-
-/*echo "<pre>";*/
-/*print_r($recset);*/
-/*echo "</pre>";*/
-
+Database::query("SELECT * FROM products");
+$products = Database::getAll();
 
 include_once("template/head.inc.php");
 ?>

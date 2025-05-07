@@ -1,21 +1,22 @@
 <?php
-@include_once(__DIR__.'/src/Database/Database.php');
+include_once(__DIR__.'../Database/Database.php');
 
 function countItemsInCart(): int
 {
-  $dbconnect = new Database();
-
   $amount = 0; 
 
-  $sql = "SELECT SUM(amount) AS total FROM cart_items";
-  $query = $dbconnect->prepare($sql);
-  $query->execute(); 
+  try {
+    Database::query("SELECT SUM(amount) AS total FROM cart_items");
+    $result = Database::get();
 
-  $result = $query->fetch(PDO::FETCH_ASSOC);
-  
-  if ($result && $result['total'] !== null) {
-    $amount = (int) $result['total'];
+    if ($result && $result->total !== null) {
+      $amount = (int) $result->total;
+    }
+  } catch (PDOException $err) {
+    echo $err;
+    echo "It did not work the way we wanted";
   }
+  
 
   return $amount;
 }

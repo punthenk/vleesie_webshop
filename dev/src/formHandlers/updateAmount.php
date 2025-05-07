@@ -1,5 +1,5 @@
 <?php
-require "../database/dbconnection.class.php";
+require "../Database/Database.php";
 $dbconnect = new Database();
 
 $cart_id = $_POST['card_id'];
