@@ -38,4 +38,4 @@ include_once("template/head.inc.php");
 </main>
 
 <?php
-include_once("./template/foot.inc.php");
+include_once(__DIR__ . '/template/foot.inc.php');
