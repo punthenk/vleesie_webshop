@@ -1,6 +1,9 @@
 <?php
+include_once(__DIR__.'/src/Helpers/Auth.php');
+getLastVisitedPage();
+
 require "src/database/dbconnection.class.php";
-$dbconnect = new dbconnection();
+$dbconnect = new Database();
 
 $product_id = $_GET['product_id'];
 $sql = "SELECT * FROM products WHERE id = :id";
@@ -12,6 +15,7 @@ $query -> execute([':id' => $product_id]);
 $product = $query -> fetch(PDO::FETCH_ASSOC);
 
 include_once("template/head.inc.php");
+
 ?>
 
 <main class="uk-container uk-padding">
@@ -23,18 +27,30 @@ include_once("template/head.inc.php");
         </section>
         <section class="uk-width-1-2 uk-card-body uk-flex uk-flex-column uk-flex-between">
           <div class="">
-            <h1> <?= $product['name'] ?> </h1>
-            <p class=""> <?= $product['description'] ?> </p>
+            <h1>
+              <?= $product['name'] ?>
+            </h1>
+            <p class="">
+              <?= $product['description'] ?>
+            </p>
           </div>
           <div class="uk-flex uk-flex-between uk-flex-middle">
             <div class="price-block">
-            <p class="product-view__price uk-text-bold uk-text-danger uk-text-left uk-text-bolder">&euro; <?= $product['price'] ?></p>
+              <p class="product-view__price uk-text-bold uk-text-danger uk-text-left uk-text-bolder">&euro;
+                <?= $product['price'] ?>
+              </p>
             </div>
             <div>
-              <button class="uk-button uk-button-primary">
-                <span uk-icon="icon: cart"></span>
-                In winkelwagen
-              </button>
+              <form method="post" action="src/formHandlers/addToCart.php">
+                <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" />
+                <input type="hidden" name="product_id" value="<?=$product['ID']?>" />
+                <a href="javascript:void">
+                  <button class="uk-button uk-button-primary">
+                    <span uk-icon="icon: cart"></span>
+                    In winkelwagen
+                  </button>
+                </a>
+              </form>
             </div>
           </div>
         </section>
