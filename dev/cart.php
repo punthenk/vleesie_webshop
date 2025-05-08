@@ -17,11 +17,7 @@ include_once("template/head.inc.php");
       ?>
       <div class="uk-card-default uk-card-small uk-flex uk-flex-between">
         <div class="uk-card-media-left uk-widht-1-5">
-<<<<<<< HEAD
-        <img src="<?= $cart_product['image']?>" alt="<?= $cart_product['name']?>" class="product-image uk-align-center">
-=======
         <img src="<?= $cart_product->image?>" alt="<?= $cart_product->name?>" class="product-image uk-align-center">
->>>>>>> dev
         </div>
         <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
           <div class="uk-width-3-4 uk-flex uk-flex-column">
