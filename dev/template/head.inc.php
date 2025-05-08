@@ -46,7 +46,9 @@
               <a href="../cart.php">
                 <span uk-icon="icon: cart"></span>
                 Winkelwagen
-                <span id="cart_amount_indicator" class="uk-badge"> <?= countItemsInCart() ?></span>
+                <span id="cart_amount_indicator" class="uk-badge">
+                  <?= countItemsInCart() ?>
+                </span>
               </a>
             </li>
             <li>
@@ -72,3 +74,5 @@
       </div>
     </div>
   </nav>
+
+  <main class="uk-container uk-padding">

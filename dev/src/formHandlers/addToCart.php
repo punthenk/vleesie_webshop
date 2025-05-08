@@ -2,7 +2,6 @@
 include_once(__DIR__."/../Database/Database.php");
 
 $product_id = $_POST['product_id'];
-$redirect_url = isset($_POST['redirect_url']) ? $_POST['redirect_url'] : '/index.php';
 
 
 function UpdateAmount($product_id, $amount) {
@@ -24,7 +23,4 @@ try {
   echo "It all went very very wrong" . $err;
 }
 
-if(!headers_sent()) {
-  header("Location: " . $redirect_url);
-  exit;
-}
+header("Location: ../../product.php");
