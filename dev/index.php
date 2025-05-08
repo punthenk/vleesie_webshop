@@ -11,7 +11,6 @@ try {
 
 include_once("template/head.inc.php");
 ?>
-<main class="uk-container uk-padding">
   <div class="uk-alert-success" uk-alert>
     <a href class="uk-alert-close" uk-close></a>
     <p>Hier tonen we o.a. of het inloggen succesvol was.</p>
@@ -35,7 +34,6 @@ include_once("template/head.inc.php");
         <!-- EINDE PRODUCT KAART 1 -->
       </div>
     </section>
-</main>
 
 <?php
 include_once(__DIR__ . '/template/foot.inc.php');

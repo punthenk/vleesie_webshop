@@ -6,7 +6,6 @@ $cart_items = Database::getAll();
 
 include_once("template/head.inc.php");
 ?>
-<main class="uk-container uk-padding">
   <div class="uk-grid">
     <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
       <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
@@ -80,7 +79,5 @@ include_once("template/head.inc.php");
       </div>
     </section>
   </div>
-</main>
-
 <?php
 include_once("template/foot.inc.php");
