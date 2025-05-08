@@ -1,18 +1,8 @@
 <?php
-require "src/database/dbconnection.class.php";
+include_once(__DIR__."/src/Database/Database.php");
 
-$dbconnect = new Database();
-
-$sql = "SELECT * FROM cart_items";
-
-$query = $dbconnect -> prepare($sql);
-
-
-$query -> execute();
-$cart_items = $query -> fetchAll(PDO::FETCH_ASSOC);
-
-/*echo "<pre>";*/
-/*print_r($cart_items);*/
+Database::query("SELECT * FROM cart_items");
+$cart_items = Database::getAll();
 
 include_once("template/head.inc.php");
 ?>
@@ -21,39 +11,41 @@ include_once("template/head.inc.php");
     <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
       <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
       <?php foreach($cart_items as $product): 
-      $product_id = $product['product_id'];
-      $product_sql = "SELECT * FROM products WHERE id = :id";
-      $product_query = $dbconnect->prepare($product_sql);
-      $product_query->execute([':id' => $product_id]);
-
-      $cart_product = $product_query->fetch(PDO::FETCH_ASSOC);
+      $product_id = $product->product_id;
+      Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
+      $cart_product = Database::get();
       ?>
       <div class="uk-card-default uk-card-small uk-flex uk-flex-between">
         <div class="uk-card-media-left uk-widht-1-5">
+<<<<<<< HEAD
         <img src="<?= $cart_product['image']?>" alt="<?= $cart_product['name']?>" class="product-image uk-align-center">
+=======
+        <img src="<?= $cart_product->image?>" alt="<?= $cart_product->name?>" class="product-image uk-align-center">
+>>>>>>> dev
         </div>
         <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
           <div class="uk-width-3-4 uk-flex uk-flex-column">
-          <h2><?= $cart_product['name'] ?></h2>
-            <p class="uk-margin-remove-top"><?= $cart_product['description']?></p>
+          <h2><?= $cart_product->name?></h2>
+            <p class="uk-margin-remove-top"><?= $cart_product->description?></p>
           </div>
           <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
             <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
-            <form id="new-amount-form-<?=$product['ID']?>" method="POST" action="src/formHandlers/updateAmount.php">
-              <input type="hidden" value="<?= $cart_product['ID']?>" name="cart_id" />
-              <input type="hidden" value="<?= $product['ID'] ?>" name="product_id" />
-              <input type="hidden" id="new-amount-<?= $product['ID'] ?>" name="amount" />
+            <form id="new-amount-form-<?=$product->ID?>" method="POST" action="src/formHandlers/updateAmount.php">
+              <input type="hidden" value="<?= $cart_product->ID?>" name="cart_id" />
+              <input type="hidden" value="<?= $product->ID?>" name="product_id" />
+              <input type="hidden" id="new-amount-<?= $product->ID?>" name="amount" />
             </form>
-            <input id="amount-<?= $product['ID']?>" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="<?= $product['amount'] ?>" onchange="ChangeAmount(<?= $product['ID']?>)" type="number" />
+            <input id="amount-<?= $product->ID?>" class="uk-form-controls uk-form-width-xsmall uk-text-medium" name="amount" value="<?= $product->amount?>" onchange="ChangeAmount(<?= $product->ID?>)" type="number" />
             </div>
             <div class="uk-width-1-4">
               <a href="#" class="uk-link-cart-trash uk-flex uk-flex-column uk-flex-middle uk-text-danger uk-flex-1">
-              <form id="delete-form-<?= $product['ID']?>" method="post" action="src/formHandlers/deleteProduct.php" style="display: none;">
-                <input type="hidden" name="cart_id" value="<?= $product['ID'] ?>"/>
-                <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>" />
+              <form id="delete-form-<?= $product->ID?>" method="post" action="src/formHandlers/deleteProduct.php" style="display: none;">
+                <input type="hidden" name="cart_id" value="<?= $product->ID?>"/>
+                <input type="hidden" name="product_id" value="<?= $product->product_id?>" />
+                <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" />
               </form>
                 <span uk-icon="icon: trash"></span>
-                <span class="uk-text-xsmall" onclick="DeleteProduct(<?= $product['ID']?>)">Verwijder</span>
+                <span class="uk-text-xsmall" onclick="DeleteProduct(<?= $product->ID?>)">Verwijder</span>
               </a>
             </div>
           </div>
