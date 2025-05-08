@@ -12,3 +12,5 @@ Database::query("UPDATE cart_items SET amount = :amount WHERE ID = :cart_id AND 
     ':cart_id' => $cart_id
   ]
 );
+
+header("Location: ../../cart.php");

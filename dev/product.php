@@ -8,7 +8,7 @@ $product_id = $_GET['product_id'];
 Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
 $product = Database::get();
 
-include_once("template/head.inc.php");
+@include_once("template/head.inc.php");
 ?>
 
 <div class="uk-grid">
@@ -34,7 +34,6 @@ include_once("template/head.inc.php");
           </div>
           <div>
             <form method="post" action="src/formHandlers/addToCart.php">
-              <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" />
               <input type="hidden" name="product_id" value="<?=$product->ID?>" />
               <a href="javascript:void">
                 <button class="uk-button uk-button-primary">
@@ -50,4 +49,4 @@ include_once("template/head.inc.php");
   </section>
 </div>
 <?php
-include_once("template/foot.inc.php");
+@include_once(__DIR__."/template/foot.inc.php");
