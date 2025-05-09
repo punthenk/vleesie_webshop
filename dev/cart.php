@@ -70,16 +70,16 @@ include_once("template/head.inc.php");
           <p class="uk-width-1-2">Verzendkosten</p>
           <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 0.00</p>
         </div>
-      </div>
-      <div class="uk-card-footer">
-        <div class="uk-flex uk-flex-between uk-flex-middle">
-          <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro; 19.95</p>
-        </div>
-        <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
-          <a href="order.html" class="uk-button uk-button-primary">
-            Verder naar bestellen
-          </a>
+        <div class="uk-card-footer">
+          <div class="uk-flex uk-flex-between uk-flex-middle">
+            <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
+            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro; 19.95</p>
+          </div>
+          <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
+            <a href="order.php" class="uk-button uk-button-primary">
+              Verder naar bestellen
+            </a>
+          </div>
         </div>
       </div>
     </div>
