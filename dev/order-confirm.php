@@ -56,7 +56,7 @@ include_once("template/head.inc.php");
                            <tr>
                                  <td class="uk-flex uk-flex-middle uk-gap">
                                     <img class="uk-order-confirm-img" src="img/brown-chicken.jpg" alt="" />
-                                    <p class="uk-margin-remove">NAAM</p>
+                                    <p class="uk-margin-remove">spek</p>
                                  </td>
                                  <td class="uk-text-center">&euro; 29.95</td>
                                  <td class="uk-text-center">1</td>
