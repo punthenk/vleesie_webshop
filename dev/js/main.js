@@ -1,7 +1,9 @@
 function ChangeAmount(productID) {
-  let amount_value = document.querySelector("#amount-" + productID);
   let form = document.querySelector("#new-amount-form-" + productID);
+  let amount_value = parseInt(document.querySelector("#amount-" + productID).value);
   let new_amount = document.querySelector('#new-amount-' + productID);
+
+  console.log("New amount = " + new_amount);
 
   new_amount.value = amount_value;
   form.submit();
