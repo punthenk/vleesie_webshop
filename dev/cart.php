@@ -1,8 +1,20 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 
+
 Database::query("SELECT * FROM cart_items");
 $cart_items = Database::getAll();
+
+// Query aanpassen om de totale som te berekenen
+$result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`");
+$product_total_price = Database::get()->product_total; // Enkele waarde ophalen
+
+$total_cart_items = 0;
+if (!is_null($cart_items)) {
+  foreach($cart_items as $cart_item) {
+    $total_cart_items++;
+  }
+}
 
 include_once("template/head.inc.php");
 ?>
@@ -12,7 +24,7 @@ include_once("template/head.inc.php");
     <?php foreach($cart_items as $cart_item): 
       $product_id = $cart_item->product_id;
       Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
-      $cart_product = Database::get();
+      $cart_product = Database::get();  
       ?>
     <div class="uk-card-default uk-card-small uk-flex uk-flex-between">
       <div class="uk-card-media-left uk-widht-1-5">
@@ -26,6 +38,8 @@ include_once("template/head.inc.php");
           <p class="uk-margin-remove-top">
             <?= $cart_product->description?>
           </p>
+          <p class="uk-margin-remove-top">&euro; <?= $cart_product->price?></p>
+          <p>Total price: &euro;</p>
         </div>
         <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
           <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
@@ -45,6 +59,7 @@ include_once("template/head.inc.php");
                 style="display: none;">
                 <input type="hidden" name="cart_id" value="<?= $cart_item->ID?>" />
                 <input type="hidden" name="product_id" value="<?= $cart_item->product_id?>" />
+    
               </form>
               <span uk-icon="icon: trash"></span>
               <span class="uk-text-xsmall" onclick="DeleteProduct(<?= $cart_item->ID?>)">Verwijder</span>
@@ -63,8 +78,8 @@ include_once("template/head.inc.php");
       </div>
       <div class="uk-card-body">
         <div class="uk-flex uk-flex-between uk-flex-middle">
-          <p class="uk-width-1-2">Artikelen (2)</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 19.95</p>
+          <p class="uk-width-1-2">Artikelen (<?=$total_cart_items?>)</p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $product_total_price ?></p>
         </div>
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <p class="uk-width-1-2">Verzendkosten</p>
@@ -73,7 +88,7 @@ include_once("template/head.inc.php");
         <div class="uk-card-footer">
           <div class="uk-flex uk-flex-between uk-flex-middle">
             <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
-            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro; 19.95</p>
+            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;</p>
           </div>
           <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
             <a href="order.php" class="uk-button uk-button-primary">

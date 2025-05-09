@@ -1,8 +1,5 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
-
-
-
 include_once("template/head.inc.php");
 ?>
       <main class="uk-container uk-padding">
@@ -88,7 +85,5 @@ include_once("template/head.inc.php");
          </div>
       </main>
 <?php
-include_once(__DIR__."/src/Database/Database.php");
-
 include_once("template/foot.inc.php");
 ?>
