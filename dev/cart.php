@@ -28,7 +28,7 @@ include_once("template/head.inc.php");
     <?php foreach($cart_items as $cart_item): 
       $product_id = $cart_item->product_id;
       Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
-      $cart_product = Database::get();  
+      $cart_product = Database::get();
       ?>
     <div class="uk-card-default uk-card-small uk-flex uk-flex-between">
       <div class="uk-card-media-left uk-widht-1-5">
@@ -43,7 +43,8 @@ include_once("template/head.inc.php");
             <?= $cart_product->description?>
           </p>
           <p class="uk-margin-remove-top">&euro; <?= $cart_product->price?></p>
-          <p>Total price: &euro;</p>
+
+          <p>Total price: &euro; <?=$cart_product->price * $cart_item->amount?></p>
         </div>
         <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
           <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
