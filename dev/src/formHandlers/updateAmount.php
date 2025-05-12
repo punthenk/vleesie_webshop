@@ -5,6 +5,10 @@ $cart_id = $_POST['cart_id'];
 $product_id = $_POST['product_id'];
 $amount = $_POST['amount'];
 
+if ($amount < 1) {
+  $amount = 1;
+}
+
 Database::query("UPDATE cart_items SET amount = :amount WHERE ID = :cart_id AND product_id = :product_id",
   [
     ':amount' => $amount,
