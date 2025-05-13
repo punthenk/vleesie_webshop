@@ -9,6 +9,20 @@ try {
   echo "Hij deed het niet";
 }
 
+Database::query("SELECT * FROM cart_items");
+$cart_items = Database::getAll();
+
+// Query aanpassen om de totale som te berekenen
+$result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`");
+$product_total_price = Database::get()->product_total; // Enkele waarde ophalen
+
+
+$total_cart_items = 0;
+if (!is_null($cart_items)) {
+  foreach($cart_items as $cart_item) {
+    $total_cart_items++;
+  }
+}
 include_once("template/head.inc.php");
 ?>
 
@@ -51,41 +65,44 @@ include_once("template/head.inc.php");
                                  <th class="uk-text-center">Aantal</th>
                                  <th class="uk-text-right">Subtotaal</th>
                            </tr>
+                           <?php foreach ($cart_items as $cart_item): 
+                              Database::query("SELECT * FROM products WHERE id = :id", [":id" => $cart_item->product_id]);
+                              $product = Database::get();
+                              ?>
                         </thead>
                         <tbody>
-                           <tr>
-                                 <td class="uk-flex uk-flex-middle uk-gap">
+                           <tr>  
+                              <td class="uk-flex uk-flex-middle uk-gap">
                                     <img class="uk-order-confirm-img" src="img/brown-chicken.jpg" alt="" />
-                                    <p class="uk-margin-remove">spek</p>
+                                    <p class="uk-margin-remove"><?=$product->name?> </p>
                                  </td>
-                                 <td class="uk-text-center">&euro; 29.95</td>
-                                 <td class="uk-text-center">1</td>
-                                 <td class="uk-text-right">&euro; 29.95</td>
-                           </tr>
-                           <tr>
-                                 <td class="uk-flex uk-flex-middle uk-gap">
-                                    <img class="uk-order-confirm-img" src="img/brown-chicken.jpg" alt="" />
-                                    <p class="uk-margin-remove">NAAM</p>
-                                 </td>
-                                 <td class="uk-text-center">&euro; 29.95</td>
-                                 <td class="uk-text-center">1</td>
-                                 <td class="uk-text-right">&euro; 29.95</td>
+                                 <td class="uk-text-center">&euro; <?=$product->price?></td>
+                                 
+                                 <td class="uk-text-center"><?=$cart_item->amount?></td>
+                                 <td class="uk-text-right">&euro; <?=$product->price * $cart_item->amount?></td>
+                                 <?php endforeach; ?>
                            </tr>
                         </tbody>
                         <tfoot>
+                           
                            <tr>
                               <td colspan="3" class="uk-text-right uk-text-uppercase">Totaal te betalen</td>
-                              <td class="uk-text-right">&euro; 29.95</td>
+                              <td class="uk-text-right">&euro; <?=$product_total_price?></td>
                            </tr>
                            <tr>
                               <td colspan="3" class="uk-text-right uk-text-uppercase">Reeds betaald</td>
-                              <td class="uk-text-right">&euro; 29.95</td>
+                              <td class="uk-text-right">&euro; 0.00</td>
                            </tr>
+                           
+                           
                            <tr>
                               <td colspan="3" class="uk-text-right uk-text-uppercase uk-text-bolder">Nog te betalen</td>
-                              <td class="uk-text-right uk-text-bolder">&euro; 0.00</td>
+                              <td class="uk-text-right uk-text-bolder">&euro; <?=$product_total_price?></td>
                            </tr>
+                           <tr>
+            
                         </tfoot>
+                        
                      </table>
                   </div>
                </div>
@@ -94,7 +111,4 @@ include_once("template/head.inc.php");
          </div>
       </main>
 <?php
-include_once(__DIR__."/src/Database/Database.php");
-
 include_once("template/foot.inc.php");
-?>

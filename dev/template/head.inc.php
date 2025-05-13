@@ -47,7 +47,8 @@
                 <span uk-icon="icon: cart"></span>
                 Winkelwagen
                 <span id="cart_amount_indicator" class="uk-badge">
-                  <?= countItemsInCart() ?>
+        
+                  <?= countItemsInCart() ?> 
                 </span>
               </a>
             </li>

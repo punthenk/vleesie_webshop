@@ -28,7 +28,8 @@ if (!is_null($cart_items)) {
                   </div>
                   <div class="uk-card-body uk-flex uk-flex-column uk-flex-between">
                      <div class="uk-flex uk-flex-between uk-flex-center">
-                        <p class="uk-width-1-2">Artikelen (<?=$total_cart_items?>) producten (<?= countItemsInCart()?>)</p>
+                        <p class="uk-width-1-2">Artikelen (<?=$total_cart_items?>)
+                         producten (<?= countItemsInCart()?>)</p>
                         <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $product_total_price ?></p>
                      </div>
                      <div class="uk-flex uk-flex-between uk-flex-center">
