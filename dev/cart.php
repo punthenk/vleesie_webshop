@@ -12,6 +12,10 @@ $result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`
 $product_total_price = Database::get()->product_total; // Enkele waarde ophalen
 
 
+if (is_null($product_total_price)) {
+  $product_total_price = 0.00;
+}
+
 $total_cart_items = 0;
 if (!is_null($cart_items)) {
   foreach($cart_items as $cart_item) {
