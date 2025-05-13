@@ -96,7 +96,7 @@ include_once("./template/head.inc.php");
       </div>
     </div>
     <div class="uk-card-footer uk-flex uk-flex-between">
-      <a href="login.html" class="">Inloggen</a>
+      <a href="login.php" class="">Inloggen</a>
       <button class="uk-button uk-button-primary" type="submit">Registreren</button>
     </div>
   </div>
