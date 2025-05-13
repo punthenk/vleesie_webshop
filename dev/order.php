@@ -1,7 +1,23 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once("template/head.inc.php");
+
+Database::query("SELECT * FROM cart_items");
+$cart_items = Database::getAll();
+
+// Query aanpassen om de totale som te berekenen
+$result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`");
+$product_total_price = Database::get()->product_total; // Enkele waarde ophalen
+
+
+$total_cart_items = 0;
+if (!is_null($cart_items)) {
+  foreach($cart_items as $cart_item) {
+    $total_cart_items++;
+  }
+}
 ?>
+
       <main class="uk-container uk-padding">
          <div class="uk-grid">
             <!-- BEGIN: FACTUUR -->
@@ -12,18 +28,19 @@ include_once("template/head.inc.php");
                   </div>
                   <div class="uk-card-body uk-flex uk-flex-column uk-flex-between">
                      <div class="uk-flex uk-flex-between uk-flex-center">
-                        <p class="uk-width-1-2">Artikelen (2)</p>
-                        <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 19.95</p>
+                        <p class="uk-width-1-2">Artikelen (<?=$total_cart_items?>) producten (<?= countItemsInCart()?>)</p>
+                        <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $product_total_price ?></p>
                      </div>
                      <div class="uk-flex uk-flex-between uk-flex-center">
                         <p class="uk-width-1-2">Verzendkosten</p>
                         <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 0.00</p>
+                        
                      </div>
                   </div>
                   <div class="uk-card-footer">
                      <div class="uk-flex uk-flex-between uk-flex-center">
                         <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
-                        <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro; 19.95</p>
+                        <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro; <?= $product_total_price?></p>
                      </div>
                   </div>
                </div>
