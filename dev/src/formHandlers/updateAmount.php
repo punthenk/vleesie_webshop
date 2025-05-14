@@ -9,6 +9,9 @@ $amount = $_POST['amount'];
 if ($amount < 1) {
   $amount = 1;
 }
+if ($amount > 20)  {
+  $amount = 20;
+}
 
 Database::query("UPDATE cart_items SET amount = :amount WHERE ID = :cart_id AND product_id = :product_id",
   [

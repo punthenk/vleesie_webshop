@@ -14,6 +14,7 @@ if(!isset($_POST['firstname']) || empty($_POST['firstname'])) {
 }
 
 if (!isset($_POST['lastname']) || empty($_POST['lastname'])) {
+   
    $validation_error = true;
 }
 
