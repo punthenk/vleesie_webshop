@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__."/../Database/Database.php");
+include_once(__DIR__."/../helpers/auth.php");
 
 $cart_id = $_POST['cart_id'];
 $product_id = $_POST['product_id'];
@@ -17,4 +18,7 @@ Database::query("UPDATE cart_items SET amount = :amount WHERE ID = :cart_id AND 
   ]
 );
 
-header("Location: ../../cart.php");
+if(!headers_sent()) {
+  header("Location: " . getLastVisitedPage());
+  exit();
+}

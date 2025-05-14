@@ -3,7 +3,7 @@ include_once(__DIR__."/src/Database/Database.php");
 @include_once(__DIR__."/template/head.inc.php");
 ?>
 <main class="uk-container uk-padding uk-flex uk-flex-middle uk-flex-center">
-  <form method="POST" action="" class="uk-width-1-1 uk-flex uk-flex-center">
+  <form method="POST" action="src/formHandlers/login_handler.php" class="uk-width-1-1 uk-flex uk-flex-center">
     <div class="uk-card uk-card-default uk-width-3-5 uk-padding-small">
       <div class="uk-card-header">
         <h2 class="uk-text-uppercase">Inloggen</h2>

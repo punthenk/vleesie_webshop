@@ -1,6 +1,7 @@
 <?php
 class Database
 {
+  
   private static $host = "db";
   private static $dbname = "webshop";
   private static $user = "root";

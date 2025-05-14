@@ -1,5 +1,8 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
+include_once(__DIR__."/src/helpers/auth.php");
+
+setLastVisitedPage();
 
 $product_id = $_GET['product_id'];
 Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
@@ -31,13 +34,10 @@ $product = Database::get();
           <div>
             <form method="post" action="src/formHandlers/addToCart.php">
               <input type="hidden" name="product_id" value="<?=$product->ID?>" />
-              <input type="hidden" name="redirect_url" value="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" />
-              <a href="javascript:void">
-                <button class="uk-button uk-button-primary">
-                  <span uk-icon="icon: cart"></span>
-                  In winkelwagen
-                </button>
-              </a>
+              <button class="uk-button uk-button-primary">
+                <span uk-icon="icon: cart"></span>
+                In winkelwagen
+              </button>
             </form>
           </div>
         </div>

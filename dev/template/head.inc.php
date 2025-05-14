@@ -10,6 +10,7 @@
 
   <title>Vleesie</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../img/Vleesie-icon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../img/Vleesie-icon.png">

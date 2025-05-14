@@ -1,15 +1,17 @@
 <?php
 include_once(__DIR__."/../Database/Database.php");
+include_once(__DIR__."/../helpers/auth.php");
+
+if($_SERVER['REQUEST_METHOD'] != "POST") {
+  header("Location: " . getLastVisitedPage());
+  exit();
+}
 
 $product_id = $_POST['product_id'];
-$redirect_url = isset($_POST['redirect_url']) ? $_POST['redirect_url'] : '/index.php';
-
-
 
 function UpdateAmount($product_id, $amount) {
   Database::query("UPDATE cart_items SET amount = amount + :amount WHERE product_id = :product_id", [':amount' => $amount, ':product_id' => $product_id]);
 }
-
 
 try {
   Database::query("SELECT * FROM cart_items WHERE product_id = :id", [':id' => $product_id]);
@@ -26,6 +28,6 @@ try {
 }
 
 if(!headers_sent()) {
-  header("Location: " . $redirect_url);
-  exit;
+  header("Location: " . getLastVisitedPage());
+  exit();
 }
