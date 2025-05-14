@@ -1,5 +1,6 @@
 <?php
-@include_once(__DIR__ . '/../src/Helpers/cart_stats.php');
+@include_once(__DIR__ . '/../src/helpers/cart_stats.php');
+include_once(__DIR__ . '/../src/helpers/auth.php');
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -41,20 +42,16 @@
 
           <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="/"><span uk-icon="icon: home"></span>Home</a></li>
+          <?php if(guest()): ?>
             <li><a href="login.php"><span uk-icon="icon: sign-in"></span>Inloggen</a></li>
             <li><a href="register.php"><span uk-icon="icon: file-edit"></span>Registreren</a></li>
+          <?php endif; ?>
+          <?php if(isLoggedIn()): ?>
             <li>
-              <a href="../cart.php">
-                <span uk-icon="icon: cart"></span>
-                Winkelwagen
-                <span id="cart_amount_indicator" class="uk-badge">
-        
-                  <?= countItemsInCart() ?> 
-                </span>
-              </a>
+              <a href="../cart.php"> <span uk-icon="icon: cart"></span> Winkelwagen <span id="cart_amount_indicator" class="uk-badge"> <?= countItemsInCart() ?> </span> </a>
             </li>
             <li>
-              <a href="#"><span uk-icon="icon: user"></span>Welkom Koen/Michiel <span uk-navbar-parent-icon></span></a>
+            <a href="#"><span uk-icon="icon: user"></span><?= user()->firstname ?><span uk-navbar-parent-icon></span></a>
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
                   <li class="uk-nav-header">Uw gegevens</li>
@@ -66,10 +63,16 @@
                   <li class="uk-nav-header">Contact</li>
                   <li><a href="#"><span uk-icon="icon: info"></span>Klantenservice</a></li>
                   <li class="uk-nav-divider"></li>
-                  <li><a href="#"><span uk-icon="icon: sign-out"></span>Uitloggen</a></li>
+                  <form id="logout-form" method="post" action="../src/formHandlers/logout_handler.php">
+                    <input type="hidden" name="user_id" value="<?= user()->id ?>"
+                  </form>
+                  <a href="javascript:void" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <span uk-icon="icon: sign-out"></span>Uitloggen
+                  </a>
                 </ul>
               </div>
             </li>
+          <?php endif; ?>
           </ul>
 
         </div>

@@ -1,6 +1,6 @@
 <?php
-include_once(__DIR__."/src/Database/Database.php");
-include_once(__DIR__."/src/helpers/auth.php");
+@include_once(__DIR__."/src/Database/Database.php");
+@include_once(__DIR__."/src/helpers/auth.php");
 
 setLastVisitedPage();
 

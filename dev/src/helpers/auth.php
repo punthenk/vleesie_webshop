@@ -1,27 +1,26 @@
 <?php
 
-if (session_status() !== PHP_SESSION_ACTIVE) 
-  @session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) @session_start();
 
-
-function login(mixed $user_data): bool 
+function login(mixed $user_data): bool
 {
-  echo "<pre>";
-  var_dump($user_data);
-
-  if(!is_null($user_data) && !empty($user_data)) {
-
-    if(is_object($user_data) && property_exists('password', $user_data)) {
-      unset($user_data->property);
-    } elseif (is_array($user_data) && array_key_exists($user_data, 'password')) {
+  if (!is_null($user_data) && !empty($user_data)) {
+    if(is_array($user_data) && array_key_exists('password', $user_data))
       unset($user_data['password']);
-    }
 
     $_SESSION['user'] = $user_data;
-    return true;
-  }
 
-  return false;
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function logout(): void
+{
+  if(isLoggedIn()) {
+    unset($_SESSION['user']);
+  }
 }
 
 function user(): mixed
@@ -41,12 +40,26 @@ function user(): mixed
   if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     return $_SESSION['user'];
   }
-
+  
   return $tempUser;
 }
 
+function isLoggedIn(): bool
+{
+  if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    return true;
+  }
 
-function setLastVisitedPage():void {
+  return false;
+}
+
+function guest(): bool
+{
+  return !isLoggedIn();
+}
+
+
+function setLastVisitedPage(): void {
   $uri = "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 
   if(isset($_SERVER['HTTP-REFERER'])) {
