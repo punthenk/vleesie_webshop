@@ -1,14 +1,14 @@
 <?php
 include_once(__DIR__."/../helpers/auth.php");
 
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
   if(isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     logout();
   } else {
-    logout();
+    echo"The user_id is not defined";
   }
-} else {
-}
+} 
 
 
 if(!headers_sent()) {
