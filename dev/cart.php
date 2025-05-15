@@ -4,12 +4,19 @@
 
 setLastVisitedPage();
 
-Database::query("SELECT * FROM cart_items");
-$cart_items = Database::getAll();
+$cart_items = [];
 
-// Query aanpassen om de totale som te berekenen
-$result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`");
-$product_total_price = Database::get()->product_total; // Enkele waarde ophalen
+Database::query("SELECT ID FROM cart WHERE customer_id = :user_id", [":user_id" => user_id()]);
+$result = Database::get();
+
+if (isset($result) && !empty($result)) {
+  Database::query("SELECT * FROM cart_items WHERE cart_id = :cart_id", [":cart_id" => $result->ID]);
+  $cart_items = Database::getAll();
+}
+
+
+Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`");
+$product_total_price = Database::get()->product_total;
 
 
 if (is_null($product_total_price)) {

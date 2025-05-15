@@ -64,7 +64,7 @@ include_once(__DIR__ . '/../src/helpers/auth.php');
                   <li><a href="#"><span uk-icon="icon: info"></span>Klantenservice</a></li>
                   <li class="uk-nav-divider"></li>
                   <form id="logout-form" method="post" action="../src/formHandlers/logout_handler.php">
-                    <input type="hidden" name="user_id" value="<?= user()->id ?>"
+                    <input type="hidden" name="user_id" value="<?= user_id(); ?>"
                   </form>
                   <a href="javascript:void" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <span uk-icon="icon: sign-out"></span>Uitloggen

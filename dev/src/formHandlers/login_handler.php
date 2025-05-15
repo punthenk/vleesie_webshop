@@ -30,4 +30,3 @@ if(password_verify($password, $customer_result->password)) {
 } else {
   echo "This is not a valid user";
 }
-

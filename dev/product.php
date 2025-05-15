@@ -2,7 +2,7 @@
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
 
-setLastVisitedPage();
+/*setLastVisitedPage();*/
 
 $product_id = $_GET['product_id'];
 Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
