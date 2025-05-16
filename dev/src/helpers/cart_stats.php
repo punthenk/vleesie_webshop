@@ -1,12 +1,15 @@
 <?php
-include_once(__DIR__.'../Database/Database.php');
+include_once(__DIR__."../Database/Database.php");
+include_once(__DIR__."../helpers/auth.php");
 
 function countItemsInCart(): int
 {
   $amount = 0; 
+  Database::query("SELECT ID FROM cart WHERE customer_id = :user_id", [':user_id' => user_id()]);
+  $cart_id = Database::get()->ID;
 
   try {
-    Database::query("SELECT SUM(amount) AS total FROM cart_items");
+    Database::query("SELECT SUM(amount) AS total FROM cart_items WHERE cart_id = :cart_id", [':cart_id' => $cart_id]);
     $result = Database::get();
 
     if ($result && $result->total !== null) {
