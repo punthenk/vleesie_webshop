@@ -30,7 +30,7 @@ class Database
   }
 
 
-  public static function query(string $query, array $params = []): bool
+  public static function query(string $query, array $params = []): bool|string
   {
     if(!self::connect())
     {
@@ -42,7 +42,7 @@ class Database
       self::$dbStatement = self::$dbConnection->prepare($query);
       self::$dbStatement->execute($params);
     } catch (PDOException $e) {
-      return false;
+      return $e;
     }
 
     return true;
@@ -64,4 +64,5 @@ class Database
 
     return self::$dbStatement->fetchAll($return_type);
   }
+
 }
