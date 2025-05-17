@@ -1,9 +1,11 @@
 <?php
 include_once(__DIR__."/../Database/Database.php");
 include_once(__DIR__."/../helpers/auth.php");
+include_once(__DIR__."/../helpers/message.php");
 
 
 if($_SERVER['HTTP_REFERER'] != 'http://localhost/login.php' || $_SERVER['REQUEST_METHOD'] != "POST") {
+  setError("legal-error", "U mag alleen via deze pagina inloggen. Vul u gegevens in A.U.B");
   header("Location: ../../login.php");  
   die();
 }
@@ -19,14 +21,14 @@ Database::query("SELECT * FROM customers WHERE email = :email", [':email' => $em
 $customer_result = Database::get();
 
 if(password_verify($password, $customer_result->password)) {
-
   if(login($customer_result)) {
+    setMessage("succes", "Het inloggen is gelukt!");
     header("Location: ../../index.php");
   } else {
+    setError("not-a-user", "Er is iets mis gegaan probeer het opnieuw");
     header("Location: ../../login.php");
   }
-
-  echo "This is a know user and the password was correct";
 } else {
-  echo "This is not a valid user";
+  setError("not-a-user", "Dit is niet een geldige gebruiker. Probeer het opnieuw");
+  header("Location: ../../login.php");
 }

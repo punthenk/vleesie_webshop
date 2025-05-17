@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
+include_once(__DIR__."/src/helpers/message.php");
 
 try {
   Database::query("SELECT * FROM products");
@@ -11,10 +12,12 @@ try {
 
 include_once("template/head.inc.php");
 ?>
+<?php if(hasMessage("succes")): ?>
   <div class="uk-alert-success" uk-alert>
     <a href class="uk-alert-close" uk-close></a>
-    <p>Hier tonen we o.a. of het inloggen succesvol was.</p>
+    <p><?= getMessage("succes") ?></p>
   </div>
+<?php endif; ?>
   <div class="uk-grid">
     <section class="uk-width-4-5">
       <h4 class="uk-text-muted uk-text-small">Gekozen categorieën: <span class="uk-text-small uk-text-primary">Alle</span></h4>

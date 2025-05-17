@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
+include_once(__DIR__."/src/helpers/message.php");
 @include_once(__DIR__."/template/head.inc.php");
 ?>
 <main class="uk-container uk-padding uk-flex uk-flex-middle uk-flex-center">
@@ -8,10 +9,12 @@ include_once(__DIR__."/src/Database/Database.php");
       <div class="uk-card-header">
         <h2 class="uk-text-uppercase">Inloggen</h2>
       </div>
+      <?php if(hasError("not-a-user")): ?>
       <div class="uk-alert-danger" uk-alert>
         <a href class="uk-alert-close" uk-close></a>
-        <p>Hier komt een algemene melding wanneer er iets fout gegaan is tijdens het inloggen</p>
+        <p><?= getError("not-a-user") ?></p>
       </div>
+      <?php endif; ?>
       <div class="uk-card-body uk-flex uk-flex-between uk-card-body-gap">
         <div class="uk-width-1-3">
           <img src="img/Vleesie-logo.png" class="uk-card-media uk-card-body-login-logo" alt="Vleesie" title="Vleesie" />
