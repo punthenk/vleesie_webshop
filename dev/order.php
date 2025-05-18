@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
-include_once("template/head.inc.php");
+include_once(__DIR__."/src/helpers/auth.php");
+include_once(__DIR__."/template/head.inc.php");
 
 Database::query("SELECT * FROM cart_items");
 $cart_items = Database::getAll();
@@ -55,9 +56,9 @@ if (!is_null($cart_items)) {
                      <h2>Verzendadres</h2>
                   </div>
                   <div class="uk-card-body uk-flex uk-flex-column uk-flex-between">
-                     <p class="uk-margin-remove-vertical">Koen Brouwer/Michiel nijenhuis</p>
-                     <p class="uk-margin-remove-vertical">Boumaboulevard 573</p>
-                     <p class="uk-margin-remove-vertical">9700 ZZ GRONINGEN</p>
+                     <p class="uk-margin-remove-vertical"><?= user()->firstname ?> <?= user()->lastname ?></p>
+                     <p class="uk-margin-remove-vertical"><?= user()->street ?> <?= user()->house_number ?></p>
+                     <p class="uk-margin-remove-vertical"><?= user()->zipcode ?> <?= user()->addition ?><?= user()->city ?></p>
                   </div>
                   <div class="uk-card-footer">
                      <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
