@@ -1,52 +1,63 @@
 <?php
 include_once(__DIR__."/../Database/Database.php");
+include_once(__DIR__."/../helpers/message.php");
 
 
 $validation_error = false;
 
 if($_SERVER['HTTP_REFERER'] != 'http://localhost/register.php' || $_SERVER['REQUEST_METHOD'] != "POST") {
+  setError("legal-error", "U mag alleen via deze pagina inloggen. Vul u gegevens in A.U.B");
   header("Location: ../../register.php");  
   die();
 }
 
 if(!isset($_POST['firstname']) || empty($_POST['firstname'])) {
-   $validation_error = true;
+  setError("firstname-error", "Vul uw voornaam in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['lastname']) || empty($_POST['lastname'])) {
-   
-   $validation_error = true;
+  setError("lastname-error", "Vul uw achternaam in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['street']) || empty($_POST['street'])) {
-   $validation_error = true;
+  setError("street-error", "Vul uw straat naam in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['housenumber']) || empty($_POST['housenumber'])) {
-   $validation_error = true;
+  setError("housenumber-error", "Vul uw huisnummer in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['zipcode']) || empty($_POST['zipcode'])) {
-   $validation_error = true;
+  setError("zipcode-error", "Vul uw postcode in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['city']) || empty($_POST['city'])) {
-   $validation_error = true;
+  setError("city-error", "Vul uw plaatsnaam in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['email']) || empty($_POST['email'])) {
-   $validation_error = true;
+  setError("email-error", "Vul uw email in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['password']) || empty($_POST['password'])) {
-   $validation_error = true;
+  setError("password-error", "Vul uw wachtwoord in A.U.B");
+  $validation_error = true;
 }
 
 if (!isset($_POST['password_confirm']) || empty($_POST['password_confirm'])) {
-   $validation_error = true;
+  setError("passwordconfirm-error", "Vul uw wachtwoord nogmaals in A.U.B");
+  $validation_error = true;
 }
 
 if ($_POST['password'] != $_POST['password_confirm']) {
+  setError("passwordconfirm-validation-error", "Uw wachtwoorden komen niet overeen, probeer het opnieuw");
   header("Location: ../../register.php");
   exit();
 }
