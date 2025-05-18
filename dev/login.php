@@ -27,15 +27,17 @@ include_once(__DIR__."/src/helpers/message.php");
             <label for="email" class="uk-form-label">Email<span class="uk-text-xsmall uk-text-italic uk-text-primary">
                 (Verplicht)</span></label>
             <input type="email" name="email" class="uk-input" id="email" placeholder="E-mail adres..." />
-            <p class="uk-text-danger uk-text-xsmall uk-text-italic uk-margin-remove-vertical">Bericht als dit veld niet
-              ingevuld is</p>
+            <?php if(hasError("login-email-error")): ?>
+            <p class="uk-text-danger uk-text-xsmall uk-text-italic uk-margin-remove-vertical"><?= getError("login-email-error") ?></p>
+            <?php endif; ?>
           </div>
           <div class="uk-padding">
             <label for="password" class="uk-form-label">Wachtwoord<span
                 class="uk-text-xsmall uk-text-italic uk-text-primary"> (Verplicht)</span></label>
             <input type="password" name="password" class="uk-input" id="password" placeholder="Wachtwoord..." />
-            <p class="uk-text-danger uk-text-xsmall uk-text-italic uk-margin-remove-vertical">Bericht als dit veld
-              niet ingevuld is</p>
+            <?php if(hasError("login-password-error")): ?>
+            <p class="uk-text-danger uk-text-xsmall uk-text-italic uk-margin-remove-vertical"><?= getError("login-password-error") ?></p>
+            <?php endif; ?>
           </div>
         </div>
       </div>

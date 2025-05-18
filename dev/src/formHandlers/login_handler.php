@@ -10,8 +10,21 @@ if($_SERVER['HTTP_REFERER'] != 'http://localhost/login.php' || $_SERVER['REQUEST
   die();
 }
 
-if(!isset($_POST['email']) || !isset($_POST['password'])) {
-  echo "The email or password are not set";
+$valid_error = false;
+
+if(!isset($_POST['email']) || empty($_POST['email'])) {
+  setError("login-email-error", "Vul uw email in A.U.B");
+  $valid_error = true;
+}
+if(!isset($_POST['password']) || empty($_POST['password'])) {
+  setError("login-password-error", "Vul uw wachtwoord in A.U.B");
+  $valid_error = true;
+}
+
+
+if($valid_error) {
+  header("Location ../../login.php");
+  exit();
 }
 
 $email = htmlentities($_POST['email']);
