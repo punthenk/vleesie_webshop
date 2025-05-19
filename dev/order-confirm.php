@@ -1,19 +1,22 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
+include_once(__DIR__."/src/helpers/auth.php");
 
-try {
-  Database::query("SELECT * FROM products");
-  $products = Database::getAll();
-} catch (PDOException $err) {
-  echo $err;
-  echo "Hij deed het niet";
-}
+Database::query("SELECT * FROM products");
+$products = Database::getAll();
 
-Database::query("SELECT * FROM cart_items");
+Database::query("SELECT ID FROM cart WHERE customer_id = :user_id", [":user_id" => user_id()]);
+$cart_id = Database::get()->ID;
+
+Database::query("SELECT * FROM cart_items WHERE cart_id = :cart_id", ["cart_id" => $cart_id]);
 $cart_items = Database::getAll();
 
-// Query aanpassen om de totale som te berekenen
-$result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`");
+
+$result = Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS
+  `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id`
+  WHERE `cart_items`.`cart_id` = :cart_id",
+  [':cart_id' => $cart_id]
+);
 $product_total_price = Database::get()->product_total; // Enkele waarde ophalen
 
 
