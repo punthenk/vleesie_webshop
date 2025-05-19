@@ -24,10 +24,6 @@ if (!is_null($cart_items)) {
   }
 }
 ?>
-<div class="uk-alert-warning" uk-alert>
-  <a href class="uk-alert-close" uk-close></a>
-  <p>Helaas zijn we nog aan het werk met deze functie</p>
-</div>
 <div class="uk-grid">
   <!-- BEGIN: FACTUUR -->
   <section class="uk-width-1-3 uk-flex uk-flex-column uk-cart-gap">

@@ -23,7 +23,7 @@ if(!isset($_POST['password']) || empty($_POST['password'])) {
 
 
 if($valid_error) {
-  header("Location ../../login.php");
+  header("Location: ../../login.php");
   exit();
 }
 
