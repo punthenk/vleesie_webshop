@@ -34,12 +34,6 @@ if (!is_null($cart_items)) {
 include_once("template/head.inc.php");
 ?>
 <div class="uk-grid">
-  <?php if(true): ?>
-  <div class="uk-alert-warning" uk-alert>
-    <a href class="uk-alert-close" uk-close></a>
-    <p>Hello</p>
-  </div>
-  <?php endif; ?>
   <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
     <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
     <?php if(empty($cart_items)): ?>
@@ -58,17 +52,12 @@ include_once("template/head.inc.php");
       </div>
       <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
         <div class="uk-width-3-4 uk-flex uk-flex-column">
-          <h2>
-            <?= $cart_product->name?>
-          </h2>
-          <p class="uk-margin-remove-top">
-            <?= $cart_product->description?>
-          </p>
-          <p class="uk-margin-remove-top">&euro;
-            <?= $cart_product->price?>
-          </p>
-
-          <p>Total price: &euro; <?=$cart_product->price * $cart_item->amount?></p>
+          <h2> <?= $cart_product->name?> </h2>
+          <p class="uk-margin-remove-top"> <?= $cart_product->description?> </p>
+        <div class="uk-flex uk-flex-between">
+          <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= $cart_product->price?> </p>
+          <p class="uk-text-bolder uk-margin-remove-top">Total price: &euro; <?=$cart_product->price * $cart_item->amount?></p>
+        </div>
         </div>
         <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
           <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
@@ -88,8 +77,6 @@ include_once("template/head.inc.php");
                 style="display: none;">
                 <input type="hidden" name="cart_id" value="<?= $cart_item->ID?>" />
                 <input type="hidden" name="product_id" value="<?= $cart_item->product_id?>" />
-
-
               </form>
               <span class="material-symbols-outlined" onclick="DeleteProduct(<?= $cart_item->ID?>)">delete</span>
             </a>
@@ -107,12 +94,8 @@ include_once("template/head.inc.php");
       </div>
       <div class="uk-card-body">
         <div class="uk-flex uk-flex-between uk-flex-middle">
-          <p class="uk-width-1-2">Artikelen (
-            <?=$total_cart_items?>)
-          </p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro;
-            <?= $product_total_price ?>
-          </p>
+          <p class="uk-width-1-2">Artikelen ( <?=$total_cart_items?>) </p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $product_total_price ?> </p>
         </div>
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <p class="uk-width-1-2">Verzendkosten</p>
