@@ -17,16 +17,23 @@ if(!isLoggedIn()) {
 $product_id = intval($_POST['product_id']);
 $cart_id = 0;
 
+function getCartID():mixed 
+{
+  Database::query("SELECT ID FROM cart WHERE customer_id = :user_id AND ordered = 0",
+    [':user_id' => user_id()]);
+  $result = Database::get();
+  if(isset($result) && !is_null($result) && !empty($result)) {
+    return $result->ID;
+  }
+  return null;
+}
 
-Database::query("SELECT ID FROM cart WHERE customer_id = :user_id AND ordered = 0",
-  [':user_id' => user_id()]);
-$cart = Database::get();
-
-if(empty($cart) || is_null($cart)) {
+if(empty(getCartID()) || is_null(getCartID())) {
   Database::query("INSERT INTO cart (customer_id) VALUES (:user_id)", [":user_id" => user_id()]);
-  $cart_id = Database::get()->ID;
+  $result = Database::get();
+  $cart_id = getCartID();
 } else {
-  $cart_id = $cart->ID;
+  $cart_id = getCartID();
 }
 
 
