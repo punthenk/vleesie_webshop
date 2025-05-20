@@ -42,7 +42,7 @@ include_once(__DIR__."/src/helpers/message.php");
         </div>
       </div>
       <div class="uk-card-footer uk-flex uk-flex-between">
-        <a href="#" class="">Wachtwoord vergeten?</a>
+        <a href="register.php" class="">Nog geen account?</a>
         <button class="uk-button uk-button-primary" type="submit">Inloggen</button>
       </div>
     </div>

@@ -6,10 +6,10 @@ function countItemsInCart(): int
 {
   $amount = 0; 
   Database::query("SELECT ID FROM cart WHERE customer_id = :user_id", [':user_id' => user_id()]);
-  $cart_id = Database::get()->ID;
+  $cart_id = Database::get();
 
   try {
-    Database::query("SELECT SUM(amount) AS total FROM cart_items WHERE cart_id = :cart_id", [':cart_id' => $cart_id]);
+    Database::query("SELECT SUM(amount) AS total FROM cart_items WHERE cart_id = :cart_id", [':cart_id' => $cart_id->ID]);
     $result = Database::get();
 
     if ($result && $result->total !== null) {

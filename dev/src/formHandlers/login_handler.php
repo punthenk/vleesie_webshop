@@ -33,12 +33,18 @@ $password = htmlentities($_POST['password']);
 Database::query("SELECT * FROM customers WHERE email = :email", [':email' => $email]);
 $customer_result = Database::get();
 
-if(password_verify($password, $customer_result->password)) {
-  if(login($customer_result)) {
-    setMessage("succes", "Het inloggen is gelukt!");
-    header("Location: ../../index.php");
+
+if($customer_result && !is_null($customer_result) && !empty($customer_result)) {
+  if(password_verify($password, $customer_result->password)) {
+    if(login($customer_result)) {
+      setMessage("succes", "Het inloggen is gelukt!");
+      header("Location: ../../index.php");
+    } else {
+      setError("not-a-user", "Er is iets mis gegaan probeer het opnieuw");
+      header("Location: ../../login.php");
+    }
   } else {
-    setError("not-a-user", "Er is iets mis gegaan probeer het opnieuw");
+    setError("not-a-user", "Dit is niet een geldige gebruiker. Probeer het opnieuw");
     header("Location: ../../login.php");
   }
 } else {
