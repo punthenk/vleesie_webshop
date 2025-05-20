@@ -55,7 +55,7 @@ include_once(__DIR__ . '/../src/helpers/auth.php');
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
                   <li class="uk-nav-header">Uw gegevens</li>
-                  <li><a href="#"><span uk-icon="icon: settings"></span>Profiel</a></li>
+                  <li><a href="profile.php"><span uk-icon="icon: settings"></span>Profiel</a></li>
                   <li><a href="#"><span uk-icon="icon: bag"></span>Bestellingen</a></li>
                   <li><a href="#"><span uk-icon="icon: credit-card"></span>Facturen</a></li>
                   <li><a href="#"><span uk-icon="icon: refresh"></span>Retouren</a></li>
