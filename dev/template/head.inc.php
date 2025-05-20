@@ -22,7 +22,7 @@ include_once(__DIR__ . '/../src/helpers/auth.php');
 
 </head>
 
-<body>
+<body onload="RestoreScrollPos()">
   <nav class="uk-navbar-container">
     <div class="uk-container">
       <div uk-navbar>

@@ -96,8 +96,6 @@ if (!is_null($cart_items)) {
                     style="display: none;">
                     <input type="hidden" name="cart_id" value="<?= $cart_item->ID ?>" />
                     <input type="hidden" name="product_id" value="<?= $cart_item->product_id ?>" />
-
-
                   </form>
                   <span class="material-symbols-outlined" onclick="DeleteProduct(<?= $cart_item->ID ?>)">delete</span>
                 </a>
