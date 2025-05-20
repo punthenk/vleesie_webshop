@@ -75,7 +75,7 @@ include_once("template/head.inc.php");
               <p class="uk-margin-remove-top"> <?= $cart_product->description ?> </p>
             <div class="uk-flex uk-flex-between">
               <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= $cart_product->price?> </p>
-              <p class="uk-text-bolder uk-margin-remove-top">Total price: &euro; <?=$cart_product->price * $cart_item->amount?></p>
+              <p class="uk-text-bolder uk-margin-remove-top">Totale prijs: &euro; <?=$cart_product->price * $cart_item->amount?></p>
             </div>
             </div>
             <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
