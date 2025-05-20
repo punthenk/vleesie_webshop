@@ -93,6 +93,5 @@ $result = Database::query("INSERT INTO customers (ID, firstname, lastname, prefi
 ':password' => password_hash($password, PASSWORD_DEFAULT),
 ]);
 
-header("Location: ../../register.php");
+header("Location: ../../login.php");
 exit();
-

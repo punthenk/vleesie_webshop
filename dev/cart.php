@@ -36,6 +36,9 @@ include_once("template/head.inc.php");
 <div class="uk-grid">
   <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
     <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
+    <?php if(empty($cart_items)): ?>
+    <div class="uk-card uk-card-default uk-card-body"><h3>Er staat nog niets in de winkelwagen op dit moment<h3></div>
+    <?php endif; ?>
     <?php foreach($cart_items as $cart_item): 
       $product_id = $cart_item->product_id;
       Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
