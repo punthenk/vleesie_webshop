@@ -26,7 +26,7 @@ if (!is_null($cart_items)) {
     $total_cart_items++;
   }
 }
-include_once("template/head.inc.php");
+@include_once("template/head.inc.php");
 ?>
 <div class="uk-grid">
   <!-- BEGIN: BEDANKT -->
@@ -116,4 +116,4 @@ include_once("template/head.inc.php");
   <!-- EINDE: EINDAFREKENING -->
 </div>
 <?php
-include_once("template/foot.inc.php");
+@include_once("template/foot.inc.php");

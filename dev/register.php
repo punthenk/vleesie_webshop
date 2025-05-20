@@ -1,8 +1,8 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/message.php");
-include_once(__DIR__."/template/head.inc.php");
-  ?>
+@include_once(__DIR__."/template/head.inc.php");
+?>
 <form method="POST" action="src/formHandlers/register_handler.php" class="uk-width-1-1 uk-flex uk-flex-center">
   <div class="uk-card uk-card-default uk-width-4-5 uk-padding-small">
     <div class="uk-card-header uk-flex uk-gap">
@@ -120,4 +120,4 @@ include_once(__DIR__."/template/head.inc.php");
   </div>
 </form>
 <?php
-include_once("./template/foot.inc.php");
+@include_once("./template/foot.inc.php");
