@@ -1,6 +1,6 @@
 <?php
-@include_once(__DIR__ . "/src/Database/Database.php");
-@include_once(__DIR__ . "/src/helpers/auth.php");
+include_once(__DIR__ . "/src/Database/Database.php");
+include_once(__DIR__ . "/src/helpers/auth.php");
 
 setLastVisitedPage();
 
@@ -37,7 +37,7 @@ if (!is_null($cart_items)) {
   }
 }
 
-include_once("template/head.inc.php");
+@include_once("template/head.inc.php");
 ?>
 <div class="uk-grid">
   <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
@@ -54,7 +54,7 @@ include_once("template/head.inc.php");
       
       <?php if (empty($cart_items)): ?>
         <div class="uk-card uk-card-default uk-card-body">
-          <h3>Er staat nog niets in de winkelwagen op dit moment<h3>
+          <h3>Je winkelwagen is nog leeg. <a href="index.php">Vind iets lekkers in onze shop!</a><h3>
         </div>
       <?php endif; ?>
 
@@ -138,4 +138,4 @@ include_once("template/head.inc.php");
   </section>
 </div>
 <?php
-include_once("template/foot.inc.php");
+@include_once("template/foot.inc.php");

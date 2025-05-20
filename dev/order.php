@@ -1,7 +1,6 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
-include_once(__DIR__."/template/head.inc.php");
 
 Database::query("SELECT * FROM cart_items");
 $cart_items = Database::getAll();
@@ -23,6 +22,8 @@ if (!is_null($cart_items)) {
     $total_cart_items++;
   }
 }
+
+@include_once(__DIR__."/template/head.inc.php");
 ?>
 <div class="uk-grid">
   <!-- BEGIN: FACTUUR -->
@@ -75,10 +76,10 @@ if (!is_null($cart_items)) {
         <p class="uk-margin-remove-vertical">
           <?= user()->street ?>
           <?= user()->house_number ?>
+          <?= user()->addition ?>
         </p>
         <p class="uk-margin-remove-vertical">
           <?= user()->zipcode ?>
-          <?= user()->addition ?>
           <?= user()->city ?>
         </p>
       </div>
@@ -125,4 +126,4 @@ if (!is_null($cart_items)) {
   <!-- EINDE: BETALEN -->
 </div>
 <?php
-include_once("template/foot.inc.php");
+@include_once("template/foot.inc.php");
