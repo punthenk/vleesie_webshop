@@ -13,8 +13,8 @@ include_once(__DIR__ . "/template/head.inc.php");
       <li><strong>GebruikersNaam:</strong> <?= user()->firstname ?></li>
       <li><strong>Email:</strong> <?= user()->email ?></li>
       <li><strong>Voledige Naam:</strong> <?= user()->firstname; ?> <?= user()->prefix ?> <?= user()->lastname ?></li>
-      <li><strong>Straat:</strong> <?= user()->street?> <?= user()->house_number ?></li>
-      <li><strong>Postcode:</strong> <?= user()->zipcode?> <?= user()->addition?></li>
+      <li><strong>Straat:</strong> <?= user()->street?> <?= user()->house_number ?> <?= user()->addition?></li>
+      <li><strong>Postcode:</strong> <?= user()->zipcode?> </li>
       <li><strong>Stad:</strong> <?= user()->city?></li>
     </ul>
   </div>

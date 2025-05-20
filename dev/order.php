@@ -75,10 +75,10 @@ if (!is_null($cart_items)) {
         <p class="uk-margin-remove-vertical">
           <?= user()->street ?>
           <?= user()->house_number ?>
+          <?= user()->addition ?>
         </p>
         <p class="uk-margin-remove-vertical">
           <?= user()->zipcode ?>
-          <?= user()->addition ?>
           <?= user()->city ?>
         </p>
       </div>
