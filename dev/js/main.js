@@ -7,9 +7,27 @@ function ChangeAmount(productID) {
 
   new_amount.value = amount_value;
   form.submit();
+
+  SetScrollPos();
 }
 
 function DeleteProduct(productID) {
   let form = document.querySelector("#delete-form-" + productID);
   form.submit();
+
+  SetScrollPos();
+}
+
+function SetScrollPos() {
+  let scrollPos = window.scrollY;
+  let scrollString = scrollPos.toString();
+  localStorage.setItem("scrollPosition", scrollString);
+  console.log(scrollString);
+}
+
+function RestoreScrollPos() {
+  let posYString = localStorage.getItem("scrollPosition");
+  let posY = parseInt(posYString);
+  window.scroll(0, posY);
+  console.log(posY);
 }
