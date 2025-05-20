@@ -65,15 +65,12 @@ include_once("template/head.inc.php");
           </div>
           <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
             <div class="uk-width-3-4 uk-flex uk-flex-column">
-              <h2>
-                <?= $cart_product->name ?>
-              </h2>
-              <p class="uk-margin-remove-top">
-                <?= $cart_product->description ?>
-              </p>
-              <p class="uk-margin-remove-top">&euro; <?= $cart_product->price ?></p>
-
-              <p>Total price: &euro; <?= $cart_product->price * $cart_item->amount ?></p>
+              <h2> <?= $cart_product->name ?> </h2>
+              <p class="uk-margin-remove-top"> <?= $cart_product->description ?> </p>
+            <div class="uk-flex uk-flex-between">
+              <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= $cart_product->price?> </p>
+              <p class="uk-text-bolder uk-margin-remove-top">Total price: &euro; <?=$cart_product->price * $cart_item->amount?></p>
+            </div>
             </div>
             <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
               <div class="uk-width-3-4 uk-flex uk-flex-column uk-flex-middle">
