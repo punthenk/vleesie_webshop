@@ -3,7 +3,13 @@ include_once(__DIR__."/../Database/Database.php");
 include_once(__DIR__."/../helpers/auth.php");
 include_once(__DIR__."/../helpers/message.php");
 
-if($_SERVER['REQUEST_METHOD'] != "POST" || !isLoggedIn()) {
+if($_SERVER['REQUEST_METHOD'] != "POST") {
+  header("Location: " . getLastVisitedPage());
+  exit();
+}
+
+if(!isLoggedIn()) {
+  setMessage("not-login-warning", "Je moet inloggen om deze functie te kunnen gebruiken");
   header("Location: " . getLastVisitedPage());
   exit();
 }

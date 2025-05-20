@@ -34,10 +34,18 @@ if (!is_null($cart_items)) {
 include_once("template/head.inc.php");
 ?>
 <div class="uk-grid">
+  <?php if(true): ?>
+  <div class="uk-alert-warning" uk-alert>
+    <a href class="uk-alert-close" uk-close></a>
+    <p>Hello</p>
+  </div>
+  <?php endif; ?>
   <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
     <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
     <?php if(empty($cart_items)): ?>
-    <div class="uk-card uk-card-default uk-card-body"><h3>Er staat nog niets in de winkelwagen op dit moment<h3></div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <h3>Er staat nog niets in de winkelwagen op dit moment<h3>
+    </div>
     <?php endif; ?>
     <?php foreach($cart_items as $cart_item): 
       $product_id = $cart_item->product_id;
@@ -56,7 +64,9 @@ include_once("template/head.inc.php");
           <p class="uk-margin-remove-top">
             <?= $cart_product->description?>
           </p>
-          <p class="uk-margin-remove-top">&euro; <?= $cart_product->price?></p>
+          <p class="uk-margin-remove-top">&euro;
+            <?= $cart_product->price?>
+          </p>
 
           <p>Total price: &euro; <?=$cart_product->price * $cart_item->amount?></p>
         </div>
@@ -79,7 +89,7 @@ include_once("template/head.inc.php");
                 <input type="hidden" name="cart_id" value="<?= $cart_item->ID?>" />
                 <input type="hidden" name="product_id" value="<?= $cart_item->product_id?>" />
 
-    
+
               </form>
               <span class="material-symbols-outlined" onclick="DeleteProduct(<?= $cart_item->ID?>)">delete</span>
             </a>
@@ -97,8 +107,12 @@ include_once("template/head.inc.php");
       </div>
       <div class="uk-card-body">
         <div class="uk-flex uk-flex-between uk-flex-middle">
-          <p class="uk-width-1-2">Artikelen (<?=$total_cart_items?>)</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $product_total_price ?></p>
+          <p class="uk-width-1-2">Artikelen (
+            <?=$total_cart_items?>)
+          </p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro;
+            <?= $product_total_price ?>
+          </p>
         </div>
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <p class="uk-width-1-2">Verzendkosten</p>
@@ -107,7 +121,9 @@ include_once("template/head.inc.php");
         <div class="uk-card-footer">
           <div class="uk-flex uk-flex-between uk-flex-middle">
             <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
-            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;<?= $product_total_price?></p>
+            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;
+              <?= $product_total_price?>
+            </p>
           </div>
           <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
             <a href="order.php" class="uk-button uk-button-primary">

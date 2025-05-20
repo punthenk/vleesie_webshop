@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
+include_once(__DIR__."/src/helpers/message.php");
 
 setLastVisitedPage();
 
@@ -10,6 +11,12 @@ $product = Database::get();
 
 @include_once("template/head.inc.php");
 ?>
+<?php if(hasMessage("not-login-warning")): ?>
+<div class="uk-alert-warning" uk-alert>
+  <a href class="uk-alert-close" uk-close></a>
+<p> <?= getMessage("not-login-warning") ?>. <a href="login.php">Log nu in</a></p>
+</div>
+<?php endif; ?>
 <div class="uk-grid">
   <section class="uk-width-1">
     <div class="uk-grid uk-card uk-card-default">
