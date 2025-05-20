@@ -69,6 +69,7 @@ if (!is_null($cart_items)) {
       <div class="uk-card-body uk-flex uk-flex-column uk-flex-between">
         <p class="uk-margin-remove-vertical">
           <?= user()->firstname ?>
+          <?= user()->prefix ?>
           <?= user()->lastname ?>
         </p>
         <p class="uk-margin-remove-vertical">
