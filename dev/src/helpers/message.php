@@ -10,6 +10,7 @@ function hasError(string $key): bool
     }
     return false;
   }
+  return false;
 }
 
 function hasMessage(string $key): bool
@@ -20,6 +21,7 @@ function hasMessage(string $key): bool
     }
     return false;
   }
+  return false;
 }
 
 

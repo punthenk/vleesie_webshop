@@ -18,24 +18,8 @@ include_once("template/head.inc.php");
 </div>
 <?php endif; ?>
 <div class="uk-grid">
-  <section class="uk-width-1-5">
-    <h4>Categoriën</h4>
-    <hr class="uk-divider" />
-    <div>
-      <input class="uk-checkbox" id="chickens" type="checkbox" name="chickens" />
-      <label for="chickens">Vlees</label>
-    </div>
-    <div>
-      <input class="uk-checkbox" id="paint" type="checkbox" name="paint" />
-      <label for="paint">Kip</label>
-    </div>
-    <div>
-      <input class="uk-checkbox" id="machines" type="checkbox" name="machines" />
-      <label for="machines">Rouw vlees</label>
-    </div>
-  </section>
   <section class="uk-width-4-5">
-    <h4 class="uk-text-muted uk-text-small">Gekozen categorieën: <span class="uk-text-small uk-text-primary">Alle</span>
+    <!--<h4 class="uk-text-muted uk-text-small">Gekozen categorieën: <span class="uk-text-small uk-text-primary">Alle</span>-->
     </h4>
     <div class="uk-flex uk-flex-home uk-flex-wrap">
       <!-- PRODUCT KAART 1 -->
