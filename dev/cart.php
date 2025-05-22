@@ -63,8 +63,8 @@ foreach ($cart_items as $cart_item) {
           </div>
           <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
             <div class="uk-width-3-4 uk-flex uk-flex-column">
-              <h2> <?= $cart_item->name ?> </h2>
-              <p class="uk-margin-remove-top"> <?= $cart_item->description ?> </p>
+            <a href="product.php?product_id=<?=$cart_item->product_id?>"><h2> <?= $cart_item->name ?> </h2></a>
+              <p class="uk-margin-remove-top"> <?= substr($cart_item->description, 0, 80)."..." ?> </p>
             <div class="uk-flex uk-flex-between">
               <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= formatPrice($cart_item->price)?> </p>
               <p class="uk-text-bolder uk-margin-remove-top">Totale prijs: &euro; <?= formatPrice($cart_item->product_total)?></p>
