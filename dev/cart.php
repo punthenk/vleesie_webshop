@@ -26,11 +26,16 @@ Database::query("SELECT
 $cart_items = Database::getAll();
 $total_amount = 0;
 $order_total_price = 0.00;
+$shipping_cost = 6.99;
 
 
 foreach ($cart_items as $cart_item) {
   $total_amount += intval($cart_item->amount);
   $order_total_price  += $cart_item->product_total;
+}
+
+if($order_total_price > 40) {
+  $shipping_cost = 0.00;
 }
 
 @include_once("template/head.inc.php");
@@ -110,12 +115,12 @@ foreach ($cart_items as $cart_item) {
         </div>
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <p class="uk-width-1-2">Verzendkosten</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 0.00</p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $shipping_cost ?></p>
         </div>
         <div class="uk-card-footer">
           <div class="uk-flex uk-flex-between uk-flex-middle">
             <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
-            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;<?= formatPrice($order_total_price)?></p>
+            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;<?= formatPrice($order_total_price + $shipping_cost)?></p>
           </div>
           <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
             <?php if (!empty($cart_items)): ?>
