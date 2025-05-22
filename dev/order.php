@@ -117,9 +117,7 @@ if (!is_null($cart_items)) {
       </div>
       <div class="uk-card-footer">
         <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
-          <a href="order-confirm.php" class="uk-button uk-button-primary">
-            Betalen
-          </a>
+          <a href="order-confirm.php" class="uk-button uk-button-primary"> Betalen </a>
         </div>
       </div>
     </div>
