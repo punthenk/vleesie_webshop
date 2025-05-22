@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
+include_once(__DIR__."/src/helpers/formatPrice.php");
 
 Database::query("SELECT * FROM cart_items");
 $cart_items = Database::getAll();
@@ -40,7 +41,7 @@ if (!is_null($cart_items)) {
             <?= countItemsInCart()?>)
           </p>
           <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro;
-            <?= $product_total_price ?>
+            <?= formatPrice($product_total_price) ?>
           </p>
         </div>
         <div class="uk-flex uk-flex-between uk-flex-center">
@@ -53,7 +54,7 @@ if (!is_null($cart_items)) {
         <div class="uk-flex uk-flex-between uk-flex-center">
           <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
           <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;
-            <?= $product_total_price?>
+            <?= formatPrice($product_total_price) ?>
           </p>
         </div>
       </div>

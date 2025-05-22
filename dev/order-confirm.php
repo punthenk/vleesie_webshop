@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
+include_once(__DIR__."/src/helpers/formatPrice.php");
 
 Database::query("SELECT * FROM products");
 $products = Database::getAll();
@@ -75,13 +76,13 @@ if (!is_null($cart_items)) {
           <tbody>
             <tr>
               <td class="uk-flex uk-flex-middle uk-gap">
-                <img class="uk-order-confirm-img" src="img/brown-chicken.jpg" alt="" />
+                <img class="uk-order-confirm-img" src="<?= $product->image ?>" alt="" />
                 <p class="uk-margin-remove"><?=$product->name?> </p>
               </td>
-              <td class="uk-text-center">&euro; <?=$product->price?></td>
+              <td class="uk-text-center">&euro; <?=formatPrice($product->price)?></td>
 
               <td class="uk-text-center"><?=$cart_item->amount?></td>
-              <td class="uk-text-right">&euro; <?=$product->price * $cart_item->amount?></td>
+              <td class="uk-text-right">&euro; <?=formatPrice($product->price * $cart_item->amount)?></td>
               <?php endforeach; ?>
             </tr>
           </tbody>
@@ -90,7 +91,7 @@ if (!is_null($cart_items)) {
             <tr>
               <td colspan="3" class="uk-text-right uk-text-uppercase">Totaal te betalen</td>
               <td class="uk-text-right">&euro;
-                <?=$product_total_price?>
+                <?=formatPrice($product_total_price)?>
               </td>
             </tr>
             <tr>
@@ -102,7 +103,7 @@ if (!is_null($cart_items)) {
             <tr>
               <td colspan="3" class="uk-text-right uk-text-uppercase uk-text-bolder">Nog te betalen</td>
               <td class="uk-text-right uk-text-bolder">&euro;
-                <?=$product_total_price?>
+                <?=formatPrice($product_total_price)?>
               </td>
             </tr>
             <tr>
