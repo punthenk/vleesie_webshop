@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__ . "/src/Database/Database.php");
 include_once(__DIR__ . "/src/helpers/auth.php");
+include_once(__DIR__ . "/src/helpers/message.php");
 
 setLastVisitedPage();
 
@@ -51,12 +52,14 @@ if (!is_null($cart_items)) {
         exit();
         ?>
       <?php endif; ?>
+
       
       <?php if (empty($cart_items)): ?>
         <div class="uk-card uk-card-default uk-card-body">
           <h3>Je winkelwagen is nog leeg. <a href="index.php">Vind iets lekkers in onze shop!</a><h3>
         </div>
       <?php endif; ?>
+
 
       <?php foreach ($cart_items as $cart_item):
         $product_id = $cart_item->product_id;
@@ -124,9 +127,9 @@ if (!is_null($cart_items)) {
             <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;<?= $product_total_price ?></p>
           </div>
           <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
-            <a href="order.php" class="uk-button uk-button-primary">
-              Verder naar bestellen
-            </a>
+            <?php if (!empty($cart_items)): ?>
+            <a href="order.php" class="uk-button uk-button-primary"> Verder naar bestellen </a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
