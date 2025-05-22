@@ -40,9 +40,6 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`ID`, `customer_id`, `ordered`, `created_at`, `updated_at`) VALUES
-(22, 27, 0, '2025-05-20 17:32:01', NULL),
-(23, 16, 0, '2025-05-20 18:53:35', NULL),
-(24, 28, 0, '2025-05-21 07:16:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,17 +59,6 @@ CREATE TABLE `cart_items` (
 --
 
 INSERT INTO `cart_items` (`ID`, `cart_id`, `product_id`, `amount`) VALUES
-(244, 22, 7, 11),
-(245, 22, 8, 13),
-(246, 22, 10, 8),
-(247, 22, 11, 17),
-(249, 23, 1, 2),
-(250, 23, 10, 5),
-(251, 23, 11, 3),
-(252, 23, 4, 3),
-(254, 24, 5, 5),
-(255, 24, 9, 15),
-(256, 24, 6, 10);
 
 -- --------------------------------------------------------
 
@@ -99,10 +85,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`ID`, `firstname`, `lastname`, `prefix`, `street`, `house_number`, `addition`, `zipcode`, `city`, `email`, `password`) VALUES
-(14, 'Koen', 'Brouwer', '', 'Jerden', '10', '', '9292 VL', 'Drachten', 'koenbrouwer@gmail.com', '$2y$10$jxrAa3B6DKfGbX.fh8Wc6uRf4mPNL1OvdcpPZpLSwJEs.SaXks9fy'),
-(16, 'Michiel', 'Nijenhuis', '', 'De Wieren', '16', '', '9866 AK', 'Lutjegast', 'Michielmitsjol@gmail.com', '$2y$10$fJkarr4i422DjWuWtJZK4O0ePWuOe4E1rJTitzhER3NzuRFot6PCu'),
-(27, 'Kees', 'Kip', 'Van Der', 'kippenlaan', '13', 'A', '1234 AB', 'Kippenvallei', 'keeskip@kippenmail.com', '$2y$10$mfdsDrJRMjD0isXnBGw6MuQQBeHHeG/j4FX9miK.RdjlADq7ENm5K'),
-(28, 'Auke', 'Meijer', '', 'laan', '1', '', '1234 AB', 'Kippenvallei', 'Auke@vleesie.com', '$2y$10$HirL0xWIBCs2xTigBmyu8O7pRXxNcaPib2z/yQhXrhjyAYaxlTWsK');
+(0, 'Kees', 'Kip', 'Van Der', 'kippenlaan', '13', 'A', '1234 AB', 'Kippenvallei', 'keeskip@kippenmail.com', '$2y$10$mfdsDrJRMjD0isXnBGw6MuQQBeHHeG/j4FX9miK.RdjlADq7ENm5K'),
 
 -- --------------------------------------------------------
 
