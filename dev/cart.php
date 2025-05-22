@@ -1,47 +1,47 @@
 <?php
-include_once(__DIR__ . "/src/Database/Database.php");
-include_once(__DIR__ . "/src/helpers/auth.php");
+include_once(__DIR__."/src/Database/Database.php");
+include_once(__DIR__."/src/helpers/auth.php");
+include_once(__DIR__."/src/helpers/message.php");
+include_once(__DIR__."/src/helpers/formatPrice.php");
 
 setLastVisitedPage();
 
-$cart_items = [];
 
-Database::query("SELECT ID FROM cart WHERE customer_id = :user_id", [":user_id" => user_id()]);
-$result = Database::get();
-if (!empty($result) && !is_null($result)) {
-  $cart_id = $result->ID;
+
+Database::query("SELECT
+  cart_items.ID,
+  cart_items.cart_id,
+  cart_items.product_id,
+  cart_items.amount,
+  products.name,
+  products.description,
+  products.image,
+  products.price,
+  (cart_items.amount * products.price) AS product_total
+  FROM cart_items 
+  LEFT JOIN products ON products.ID = cart_items.product_id
+  LEFT JOIN cart ON cart.ID = cart_items.cart_id
+  WHERE cart.customer_id = :user_id", [":user_id" => user_id()]);
+
+$cart_items = Database::getAll();
+$total_amount = 0;
+$order_total_price = 0.00;
+$shipping_cost = 6.99;
+
+
+foreach ($cart_items as $cart_item) {
+  $total_amount += intval($cart_item->amount);
+  $order_total_price  += $cart_item->product_total;
 }
 
-$product_total_price = null;
-
-if (isset($cart_id) && !empty($cart_id) && !is_null($cart_id)) {
-  Database::query("SELECT * FROM cart_items WHERE cart_id = :cart_id", [":cart_id" => $cart_id]);
-  $cart_items = Database::getAll();
-
-  Database::query("SELECT SUM(`cart_items`.`amount` * `products`.`price`) AS `product_total` FROM `cart_items` JOIN `products` ON `cart_items`.`product_id` = `products`.`id` 
-    WHERE `cart_items`.`cart_id` = :cart_id", [':cart_id' => $cart_id]);
-  $product_total_price = Database::get()->product_total;
-}
-
-
-
-
-if (is_null($product_total_price)) {
-  $product_total_price = 0.00;
-}
-
-$total_cart_items = 0;
-if (!is_null($cart_items)) {
-  foreach ($cart_items as $cart_item) {
-    $total_cart_items++;
-  }
+if($order_total_price > 40) {
+  $shipping_cost = 0.00;
 }
 
 @include_once("template/head.inc.php");
 ?>
 <div class="uk-grid">
   <section class="uk-width-2-3 uk-flex uk-flex-column uk-cart-gap">
-    <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
 
     <?php if (!isLoggedIn()): ?>
       <div class="uk-card uk-card-default uk-card-body">
@@ -51,6 +51,7 @@ if (!is_null($cart_items)) {
         exit();
         ?>
       <?php endif; ?>
+
       
       <?php if (empty($cart_items)): ?>
         <div class="uk-card uk-card-default uk-card-body">
@@ -59,23 +60,24 @@ if (!is_null($cart_items)) {
       <?php endif; ?>
 
 
-
-      <?php foreach ($cart_items as $cart_item):
-        $product_id = $cart_item->product_id;
-        Database::query("SELECT * FROM products WHERE id = :id", [':id' => $product_id]);
-        $cart_product = Database::get();
-      ?>
+      <?php foreach ($cart_items as $cart_item): ?>
+        <!-- BEGIN: SHOPPINGCART PRODUCT 1 -->
         <div class="uk-card-default uk-card-small uk-flex uk-flex-between">
           <div class="uk-card-media-left uk-widht-1-5">
-            <img src="<?= $cart_product->image ?>" alt="<?= $cart_product->name ?>" class="product-image uk-align-center">
+            <img src="<?= $cart_item->image ?>" alt="<?= $cart_item->name ?>" class="product-image uk-align-center">
           </div>
           <div class="uk-card-body uk-width-4-5 uk-flex uk-flex-between">
             <div class="uk-width-3-4 uk-flex uk-flex-column">
-              <h2> <?= $cart_product->name ?> </h2>
-              <p class="uk-margin-remove-top"> <?= $cart_product->description ?> </p>
+            <a href="product.php?product_id=<?=$cart_item->product_id?>"><h2> <?= $cart_item->name ?> </h2></a>
+              <p class="uk-margin-remove-top"> <?= substr($cart_item->description, 0, 80)."..." ?> </p>
             <div class="uk-flex uk-flex-between">
+<<<<<<< HEAD
               <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= $cart_product->price?> </p>
               <p class="uk-text-bolder uk-margin-remove-top">Totale prijs: &euro; <?=$cart_product->price * $cart_item->amount?></p>
+=======
+              <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= formatPrice($cart_item->price)?> </p>
+              <p class="uk-text-bolder uk-margin-remove-top">Totale prijs: &euro; <?= formatPrice($cart_item->product_total)?></p>
+>>>>>>> origin/dev
             </div>
             </div>
             <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
@@ -113,22 +115,22 @@ if (!is_null($cart_items)) {
       </div>
       <div class="uk-card-body">
         <div class="uk-flex uk-flex-between uk-flex-middle">
-          <p class="uk-width-1-2">Artikelen (<?= $total_cart_items ?>)</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $product_total_price ?></p>
+          <p class="uk-width-1-2">Artikelen (<?= $total_amount  ?>)</p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= formatPrice($order_total_price) ?></p>
         </div>
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <p class="uk-width-1-2">Verzendkosten</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 0.00</p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $shipping_cost ?></p>
         </div>
         <div class="uk-card-footer">
           <div class="uk-flex uk-flex-between uk-flex-middle">
             <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
-            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;<?= $product_total_price ?></p>
+            <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;<?= formatPrice($order_total_price + $shipping_cost)?></p>
           </div>
           <div class="uk-flex uk-flex-1 uk-flex-middle uk-flex-center uk-margin-medium-top">
-            <a href="order.php" class="uk-button uk-button-primary">
-              Verder naar bestellen
-            </a>
+            <?php if (!empty($cart_items)): ?>
+            <a href="order.php" class="uk-button uk-button-primary"> Verder naar bestellen </a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
