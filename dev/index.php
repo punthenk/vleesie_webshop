@@ -12,9 +12,7 @@ include_once("template/head.inc.php");
 <?php if(hasMessage("succes")): ?>
 <div class="uk-alert-success" uk-alert>
   <a href class="uk-alert-close" uk-close></a>
-  <p>
-    <?= getMessage("succes") ?>
-  </p>
+  <p> <?= getMessage("succes") ?> </p>
 </div>
 <?php endif; ?>
 <div class="uk-grid">
@@ -41,4 +39,4 @@ include_once("template/head.inc.php");
   </section>
 
   <?php
-include_once(__DIR__ . '/template/foot.inc.php');
+include_once(__DIR__.'/template/foot.inc.php');
