@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/message.php");
+include_once(__DIR__."/src/helpers/formatPrice.php");
 
 Database::query("SELECT * FROM products");
 $products = Database::getAll();
@@ -29,7 +30,7 @@ include_once("template/head.inc.php");
         </div>
         <div class="uk-card-body uk-card-body-home">
           <p class="product-card-p"><?=substr($product->description, 0, 80)."..."?></p>
-          <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; <?=$product->price?>
+          <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro; <?= formatPrice($product->price)?>
           </p>
         </div>
       </a>
