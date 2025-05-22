@@ -71,13 +71,8 @@ if($order_total_price > 40) {
             <a href="product.php?product_id=<?=$cart_item->product_id?>"><h2> <?= $cart_item->name ?> </h2></a>
               <p class="uk-margin-remove-top"> <?= substr($cart_item->description, 0, 80)."..." ?> </p>
             <div class="uk-flex uk-flex-between">
-<<<<<<< HEAD
-              <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= $cart_product->price?> </p>
-              <p class="uk-text-bolder uk-margin-remove-top">Totale prijs: &euro; <?=$cart_product->price * $cart_item->amount?></p>
-=======
               <p class="uk-text-bolder uk-margin-remove-top">&euro; <?= formatPrice($cart_item->price)?> </p>
               <p class="uk-text-bolder uk-margin-remove-top">Totale prijs: &euro; <?= formatPrice($cart_item->product_total)?></p>
->>>>>>> origin/dev
             </div>
             </div>
             <div class="uk-width-1-4 uk-flex uk-flex-between uk-flex-middle uk-flex-center">
