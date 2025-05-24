@@ -6,7 +6,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   if(isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     logout();
   } else {
-    echo"The user_id is not defined";
+    echo"The user_id is not defined" . "<br>";
+    var_dump($_POST['user_id']);
   }
 } 
 

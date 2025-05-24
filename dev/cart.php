@@ -3,6 +3,7 @@ include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
 include_once(__DIR__."/src/helpers/message.php");
 include_once(__DIR__."/src/helpers/formatPrice.php");
+include_once(__DIR__."/src/helpers/priceHelper.php");
 
 setLastVisitedPage();
 
@@ -34,9 +35,7 @@ foreach ($cart_items as $cart_item) {
   $order_total_price  += $cart_item->product_total;
 }
 
-if($order_total_price > 40) {
-  $shipping_cost = 0.00;
-}
+$shipping_cost = getShippingCosts($order_total_price);
 
 @include_once("template/head.inc.php");
 ?>
@@ -115,7 +114,7 @@ if($order_total_price > 40) {
         </div>
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <p class="uk-width-1-2">Verzendkosten</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= $shipping_cost ?></p>
+          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= formatPrice($shipping_cost) ?></p>
         </div>
         <div class="uk-card-footer">
           <div class="uk-flex uk-flex-between uk-flex-middle">

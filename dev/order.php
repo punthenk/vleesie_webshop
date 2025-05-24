@@ -2,6 +2,7 @@
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
 include_once(__DIR__."/src/helpers/formatPrice.php");
+include_once(__DIR__."/src/helpers/priceHelper.php");
 
 Database::query("SELECT * FROM cart_items");
 $cart_items = Database::getAll();
@@ -23,6 +24,8 @@ if (!is_null($cart_items)) {
     $total_cart_items++;
   }
 }
+
+$shipping_cost = getShippingCosts($product_total_price);
 
 @include_once(__DIR__."/template/head.inc.php");
 ?>
@@ -46,7 +49,7 @@ if (!is_null($cart_items)) {
         </div>
         <div class="uk-flex uk-flex-between uk-flex-center">
           <p class="uk-width-1-2">Verzendkosten</p>
-          <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; 0.00</p>
+                    <p class="uk-width-1-2 uk-margin-remove-top uk-text-right">&euro; <?= formatPrice($shipping_cost) ?></p>
 
         </div>
       </div>
@@ -54,7 +57,7 @@ if (!is_null($cart_items)) {
         <div class="uk-flex uk-flex-between uk-flex-center">
           <p class="uk-width-1-2 uk-text-bold">Te betalen</p>
           <p class="uk-width-1-2 uk-margin-remove-top uk-text-right uk-text-bold">&euro;
-            <?= formatPrice($product_total_price) ?>
+            <?= formatPrice($product_total_price + $shipping_cost) ?>
           </p>
         </div>
       </div>
