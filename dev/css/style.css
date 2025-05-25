@@ -28,9 +28,9 @@
    max-width: 250px;
 }
 
-.uk-card-body-home > p:first-child {
-   min-height: 72px;
-}
+/*.uk-card-body-home > p:first-child {*/
+/*   min-height: 72px;*/
+/*}*/
 
 .uk-flex-home, .uk-cart-gap, .uk-card-body-gap {
    gap: 1rem;
