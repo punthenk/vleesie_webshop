@@ -2,6 +2,7 @@
 include_once(__DIR__."/src/Database/Database.php");
 include_once(__DIR__."/src/helpers/auth.php");
 include_once(__DIR__."/src/helpers/message.php");
+include_once(__DIR__."/src/helpers/formatPrice.php");
 
 setLastVisitedPage();
 
@@ -35,7 +36,7 @@ $product = Database::get();
         <div class="uk-flex uk-flex-between uk-flex-middle">
           <div class="price-block">
             <p class="product-view__price uk-text-bold uk-text-danger uk-text-left uk-text-bolder">&euro;
-              <?= $product->price?>
+              <?= formatPrice($product->price) ?>
             </p>
           </div>
           <div>
