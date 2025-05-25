@@ -75,6 +75,7 @@ include_once("template/head.inc.php");
                     <img src="<?=$product->image?>" alt="<?=$product->name?>" class="product-image uk-align-center">
                 </div>
                 <div class="uk-card-body uk-card-body-home">
+                    <p class="product-card-p uk-text-medium uk-text-bold"><?= $product->name ?></p>
                     <p class="product-card-p"><?=substr($product->description, 0, 80)."..."?></p>
                     <p class="product-card-p uk-text-large uk-text-bold uk-text-danger uk-text-right">&euro;
                         <?= formatPrice($product->price)?>
